@@ -1,6 +1,6 @@
 import React from 'react';
 import Breadcrumb from 'components/Breadcrumbs/Breadcrumb';
-import userThree from 'public/images/user/user-03.png';
+import userThree from '@/images/user/user-03.png';
 
 const Settings = () => {
   return (
