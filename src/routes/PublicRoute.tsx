@@ -1,4 +1,4 @@
-import DefaultLayout from '@/layout/DefaultLayout'
+import DefaultLayout from '@/components/layout/DefaultLayout'
 
 const PublicRoute = ({children}: {children: React.ReactNode}) => {
   return (
