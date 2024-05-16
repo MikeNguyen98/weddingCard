@@ -5,8 +5,47 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import 'react-calendar/dist/Calendar.css';
+import { useEffect, useState } from 'react';
+const targetDate = new Date('2024-09-21T17:00:00');
 const Home = () => {
+  const calculateTimeLeft = () => {
+    const difference = targetDate.getTime() - new Date().getTime();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      const seconds = Math.floor((difference / 1000) % 60);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const hours = Math.floor((difference / 1000 / 60 / 60) % 24);
+      const days = Math.floor((difference / (1000 * 60 * 60 * 24)) % 30);
+      const months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30));
+
+      timeLeft = {
+        months,
+        days,
+        hours,
+        minutes,
+        seconds,
+      };
+    }
+
+    return timeLeft;
+  };
+  const [timeLeft, setTimeLeft] = useState<any>(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
   const date = new Date('2024-09-21');
+  const formatTime = (time: number) => (
+    <span className='text-md md:"text-3xl font-bold'>
+      {time < 10 ? `0${time}` : time}
+    </span>
+  );
+
   return (
     <div className="flex w-full overflow-y-auto overflow-x-hidden flex-col gap-4 bg-orange-50 font-mono pb-2">
       <link
@@ -173,7 +212,7 @@ const Home = () => {
           <p className="text-base md:text-2xl">2024</p>
         </div>
       </div>
-      <div className='flex flex-col justify-center items-center text-center gap-4'>
+      <div className="flex flex-col justify-center items-center text-center gap-4">
         <p>(Tức ngày 19 thngs 8 năm Giáp Thìn)</p>
         <p>TẠI NHÀ HÀNG TIỆC CƯỚI</p>
         <p>SALON 1 - 229 Tây Sơn, Đống Đa, Hà Nội</p>
@@ -236,6 +275,55 @@ const Home = () => {
           </svg>
           CHỈ DƯỜNG
         </a>
+      </div>
+      <div className="flex gap-2 text-center w-full justify-center items-center">
+        <fieldset className="border-2 rounded-lg flex justify-center items-center">
+          <legend
+            style={{
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              padding: '0.5rem',
+            }}
+          >
+            Timer
+          </legend>
+          {timeLeft?.months && (
+            <>
+              <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+                {formatTime(timeLeft?.months || 0)}
+                <span>Tháng</span>
+              </div>{' '}
+              :
+            </>
+          )}
+          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+            {formatTime(timeLeft?.days || 0)}
+            <span>Ngày</span>
+          </div>{' '}
+          :
+          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+            {formatTime(timeLeft?.hours || 0)}
+            <span>Giờ</span>
+          </div>{' '}
+          :
+          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+            {formatTime(timeLeft?.minutes || 0)}
+            <span>Phút</span>
+          </div>{' '}
+          :
+          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+            {formatTime(timeLeft?.seconds || 0)}
+            <span>Giây</span>
+          </div>
+        </fieldset>
+      </div>
+      <div className="w-full h-[200px] md:h-[500px] content-center text-center bg-white">
+        <p
+          className="text-2xl md:text-3xl"
+          style={{ fontFamily: 'Great Vibes' }}
+        >
+          Thank you
+        </p>
       </div>
     </div>
   );
