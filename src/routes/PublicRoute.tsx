@@ -1,9 +1,6 @@
-import DefaultLayout from '@/components/layout/DefaultLayout'
 
-const PublicRoute = ({children}: {children: React.ReactNode}) => {
-  return (
-    <DefaultLayout>{children}</DefaultLayout>
-  )
-}
+const PublicRoute = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+};
 
-export default PublicRoute
+export default PublicRoute;
