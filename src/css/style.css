@@ -44,13 +44,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 4px;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 .swiper-slide:not(.swiper-slide-next) {
@@ -72,4 +74,15 @@
   background-image: url('../images/icon/heart.svg') !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+}
+.react-calendar__tile {
+  padding: 14px 6.6667px !important;
+}
+.react-calendar__tile--now {
+  background: unset !important;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #fff !important;
 }

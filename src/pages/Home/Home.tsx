@@ -6,6 +6,8 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import 'react-calendar/dist/Calendar.css';
 import { useEffect, useState } from 'react';
+import './styles.css';
+
 const targetDate = new Date('2024-09-21T17:00:00');
 const Home = () => {
   const calculateTimeLeft = () => {
@@ -56,7 +58,7 @@ const Home = () => {
         href="https://fonts.googleapis.com/css?family=Allura"
         rel="stylesheet"
       />
-      <div className="w-full h-[500px] bg-slate-600 relative">
+      <div className="w-full h-[500px] bg-slate-600 relative saveDate">
         <div className="absolute flex flex-col justify-center items-center w-full h-full text-white">
           <p style={{ fontFamily: 'Great Vibes' }} className="italic text-3xl">
             Cường <span className="text-red-500">&hearts;</span> Hằng
@@ -69,24 +71,6 @@ const Home = () => {
         "Hôn nhân không phải là một điểm đến mà là một cuộc hành trình, nơi mà
         hai người cùng nhau xây dựng và phát triển."
       </p>
-      <div className="flex flex-row justify-center items-center">
-        <div className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"></div>
-        <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
-          <p className="font-bold text-sm md:text-lg" data-aos="fade-left">
-            CÔ DÂU
-          </p>
-          <p
-            className="text-base md:text-2xl italic"
-            style={{ fontFamily: 'Great Vibes' }}
-            data-aos="fade-left"
-          >
-            Phạm Thị Thu Hằng
-          </p>
-          <p className="text-xs md:text-base" data-aos="fade-left">
-            Em - ...{' '}
-          </p>
-        </div>
-      </div>
       <div className="flex flex-row justify-center items-center">
         <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
           <p
@@ -106,7 +90,41 @@ const Home = () => {
             Anh - ...{' '}
           </p>
         </div>
-        <div className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"></div>
+        <div
+          className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
+          style={{
+            backgroundImage: "url('/src/images/Anh.jpg')",
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
+      <div className="flex flex-row justify-center items-center">
+        <div
+          className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
+          style={{
+            backgroundImage: "url('/src/images/Em.jpg')",
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
+          <p className="font-bold text-sm md:text-lg" data-aos="fade-left">
+            CÔ DÂU
+          </p>
+          <p
+            className="text-base md:text-2xl italic"
+            style={{ fontFamily: 'Great Vibes' }}
+            data-aos="fade-left"
+          >
+            Phạm Thị Thu Hằng
+          </p>
+          <p className="text-xs md:text-base" data-aos="fade-left">
+            Em - ...{' '}
+          </p>
+        </div>
       </div>
       <div className="flex justify-center items-center w-[30px] h-[2px]" />
       <div className="flex flex-col justify-center items-center gap-4 text-center">
@@ -114,7 +132,7 @@ const Home = () => {
           Thân mời
         </p>
         <p className="text-base md:text-2xl">ĐẾN DỰ LỄ CƯỚI CỦA CHÚNG MÌNH</p>
-        <div className="w-[120vw] md:w-full p-2 h-[200px] md:w-3/4 md:h-[300px]">
+        <div className="w-[120vw] md:w-full p-2 h-[300px] md:w-3/4 md:h-[400px]">
           <Swiper
             slidesPerView={3}
             spaceBetween={8}
@@ -138,39 +156,111 @@ const Home = () => {
             className="w-full h-full flex justify-center items-center"
           >
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 1
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed1.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 2
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed2.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 3
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed3.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 4
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed4.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 5
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed5.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 6
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed6.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 7
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed7.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 8
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed8.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
 
             <SwiperSlide className="w-full flex justify-center items-center text-center">
-              Slide 9
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: "url('/src/images/wed9.jpg')",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
             </SwiperSlide>
           </Swiper>
         </div>
@@ -287,7 +377,7 @@ const Home = () => {
           >
             Timer
           </legend>
-          {timeLeft?.months && (
+          {timeLeft?.months > 0 && (
             <>
               <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
                 {formatTime(timeLeft?.months || 0)}
@@ -317,13 +407,107 @@ const Home = () => {
           </div>
         </fieldset>
       </div>
-      <div className="w-full h-[200px] md:h-[500px] content-center text-center bg-white">
+      <div className="w-full content-center text-center bg-white relative">
+        <img src="/src/images/thankyou.jpg" alt="" />
         <p
-          className="text-2xl md:text-3xl"
+          className="text-2xl md:text-[60px] lg:text-[120px] font-medium text-white absolute left-1/2 transform -translate-x-1/2 md:translate-y-0 -translate-y-1/2 top-[20%]"
           style={{ fontFamily: 'Great Vibes' }}
         >
           Thank you
         </p>
+      </div>
+      <div
+        id="default-modal"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div className="relative p-4 w-full max-w-2xl max-h-full">
+          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                Terms of Service
+              </h3>
+              <button
+                type="button"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="default-modal"
+              >
+                <svg
+                  className="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span className="sr-only">Close modal</span>
+              </button>
+            </div>
+            <div className="p-4 md:p-5 space-y-4">
+              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                With less than a month to go before the European Union enacts
+                new consumer privacy laws for its citizens, companies around the
+                world are updating their terms of service agreements to comply.
+              </p>
+              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                The European Union’s General Data Protection Regulation
+                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
+                common set of data rights in the European Union. It requires
+                organizations to notify users as soon as possible of high-risk
+                data breaches that could personally affect them.
+              </p>
+            </div>
+            {/* back to top */}
+            <button
+              type="button"
+              data-twe-ripple-init
+              data-twe-ripple-color="light"
+              className="!fixed bottom-5 end-5 hidden rounded-full bg-red-600 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg"
+              id="btn-back-to-top"
+            >
+              <span className="[&>svg]:w-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="3"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                  />
+                </svg>
+              </span>
+            </button>
+            {/* modal */}
+            <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+              <button
+                data-modal-hide="default-modal"
+                type="button"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                I accept
+              </button>
+              <button
+                data-modal-hide="default-modal"
+                type="button"
+                className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              >
+                Decline
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
