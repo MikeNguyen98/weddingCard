@@ -64,7 +64,7 @@ const Home = () => {
   const pages = [
     {
       id: 'saveDate',
-      img: 'src/images/saveDate.JPG',
+      img: '/saveDate.JPG',
       content: (
         <div className="w-full h-[500px] bg-slate-600 relative saveDate">
           <div className=" flex flex-col justify-center items-center w-full h-full text-white">
@@ -111,7 +111,7 @@ const Home = () => {
             <div
               className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
               style={{
-                backgroundImage: "url('src/images/Anh.jpg')",
+                backgroundImage: "url('/Anh.jpg')",
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -122,7 +122,7 @@ const Home = () => {
             <div
               className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
               style={{
-                backgroundImage: "url('src/images/Em.jpg')",
+                backgroundImage: "url('/Em.jpg')",
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -189,49 +189,49 @@ const Home = () => {
                 showPageCorners={true}
                 disableFlipByClick={false}
               >
-                <img src="src/images/21.jpg" />
-                <img src="src/images/1.1.jpg" />
-                <img src="src/images/1.jpg" />
-                <img src="src/images/2.jpg" />
-                <img src="src/images/2.1.jpg" />
-                <img src="src/images/3.1.jpg" />
-                <img src="src/images/3.jpg" />
-                <img src="src/images/4.1.jpg" />
-                <img src="src/images/4.jpg" />
-                <img src="src/images/6.1.jpg" />
-                <img src="src/images/6.jpg" />
-                <img src="src/images/7.1.jpg" />
-                <img src="src/images/7.jpg" />
-                <img src="src/images/8.1.jpg" />
-                <img src="src/images/8.2.jpg" />
-                <img src="src/images/10.1.jpg" />
-                <img src="src/images/10.jpg" />
-                <img src="src/images/11.1.jpg" />
-                <img src="src/images/11.jpg" />
-                <img src="src/images/12.1.jpg" />
-                <img src="src/images/12.jpg" />
-                <img src="src/images/13.jpg" />
-                <img src="src/images/13.jpg" />
-                <img src="src/images/14.1.jpg" />
-                <img src="src/images/14.jpg" />
-                <img src="src/images/15.1.jpg" />
-                <img src="src/images/15.jpg" />
-                <img src="src/images/17.jpg" />
-                <img src="src/images/17.jpg" />
-                <img src="src/images/18.1.jpg" />
-                <img src="src/images/18.jpg" />
-                <img src="src/images/19.jpg" />
-                <img src="src/images/19.jpg" />
-                <img src="src/images/20.1.jpg" />
-                <img src="src/images/20.jpg" />
-                <img src="src/images/22.jpg" />
-                <img src="src/images/22.1.jpg" />
-                <img src="src/images/22.2.jpg" />
-                <img src="src/images/22.3.jpg" />
-                <img src="src/images/24.jpg" />
-                <img src="src/images/24.1.jpg" />
-                <img src="src/images/24.2.jpg" />
-                <img src="src/images/27.jpg" />
+                <img src="/21.jpg" />
+                <img src="/1.1.jpg" />
+                <img src="/1.jpg" />
+                <img src="/2.jpg" />
+                <img src="/2.1.jpg" />
+                <img src="/3.1.jpg" />
+                <img src="/3.jpg" />
+                <img src="/4.1.jpg" />
+                <img src="/4.jpg" />
+                <img src="/6.1.jpg" />
+                <img src="/6.jpg" />
+                <img src="/7.1.jpg" />
+                <img src="/7.jpg" />
+                <img src="/8.1.jpg" />
+                <img src="/8.2.jpg" />
+                <img src="/10.1.jpg" />
+                <img src="/10.jpg" />
+                <img src="/11.1.jpg" />
+                <img src="/11.jpg" />
+                <img src="/12.1.jpg" />
+                <img src="/12.jpg" />
+                <img src="/13.jpg" />
+                <img src="/13.jpg" />
+                <img src="/14.1.jpg" />
+                <img src="/14.jpg" />
+                <img src="/15.1.jpg" />
+                <img src="/15.jpg" />
+                <img src="/17.jpg" />
+                <img src="/17.jpg" />
+                <img src="/18.1.jpg" />
+                <img src="/18.jpg" />
+                <img src="/19.jpg" />
+                <img src="/19.jpg" />
+                <img src="/20.1.jpg" />
+                <img src="/20.jpg" />
+                <img src="/22.jpg" />
+                <img src="/22.1.jpg" />
+                <img src="/22.2.jpg" />
+                <img src="/22.3.jpg" />
+                <img src="/24.jpg" />
+                <img src="/24.1.jpg" />
+                <img src="/24.2.jpg" />
+                <img src="/27.jpg" />
               </HTMLFlipBook>
 
               <Lightbox
@@ -399,7 +399,7 @@ const Home = () => {
       content: (
         <div className="w-auto h-screen content-center text-center bg-white relative">
           <img
-            src="src/images/thankyou.jpg"
+            src="/thankyou.jpg"
             alt="thankyou"
             className="w-full h-full object-cover"
           />
@@ -421,8 +421,6 @@ const Home = () => {
 
       if (isVisible) {
         // Notify when the element is in the viewport
-        console.log('Element N is in view!');
-        alert('Element N is in view!');
         firstTime.current = false;
       }
     }
@@ -547,7 +545,7 @@ const Home = () => {
         </div>
       </div>
       <audio id="audio" loop autoPlay={true}>
-        <source src="src/images/music.mp3" type="audio/mpeg" />
+        <source src="/music.mp3" type="audio/mpeg" />
       </audio>
     </div>
   );
