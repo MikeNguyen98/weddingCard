@@ -168,7 +168,7 @@ const Home = () => {
             </p>
             <div className="h-[600px] w-full p-2 flex items-center justify-center rounded">
               <HTMLFlipBook
-                width={428}
+                width={390}
                 height={600}
                 className={'bg-white rounded'}
                 style={{}}
