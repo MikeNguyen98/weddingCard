@@ -1,15 +1,28 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { useEffect, useRef, useState } from 'react';
 import Calendar from 'react-calendar';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css';
 import 'react-calendar/dist/Calendar.css';
-import { useEffect, useState } from 'react';
+import HTMLFlipBook from 'react-pageflip';
 import './styles.css';
 
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+
+// import optional lightbox plugins
+import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
+import Slideshow from 'yet-another-react-lightbox/plugins/slideshow';
+import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+
+import photos from './photo';
+import Page from '@/components/Page';
+
 const targetDate = new Date('2024-09-21T17:00:00');
+
 const Home = () => {
+  const [index, setIndex] = useState(-1);
+  const [loading, setLoading] = useState(true);
+  const firstTime = useRef<boolean>(true);
   const calculateTimeLeft = () => {
     const difference = targetDate.getTime() - new Date().getTime();
     let timeLeft = {};
@@ -48,6 +61,380 @@ const Home = () => {
     </span>
   );
 
+  const pages = [
+    {
+      id: 'saveDate',
+      img: '/src/images/saveDate.JPG',
+      content: (
+        <div className="w-full h-[500px] bg-slate-600 relative saveDate">
+          <div className=" flex flex-col justify-center items-center w-full h-full text-white">
+            <p
+              style={{ fontFamily: 'Great Vibes' }}
+              className="italic text-3xl"
+            >
+              Cường <span className="text-red-500">&hearts;</span> Hằng
+            </p>
+            <p>SAVE OUR DATE</p>
+            <p>21.09.2024</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'aboutus',
+      img: undefined,
+      content: (
+        <div className="w-full h-full">
+          <p className="flex items-center justify-center text-center w-full px-2 text-xs md:text-base">
+            "Hôn nhân không phải là một điểm đến mà là một cuộc hành trình, nơi
+            mà hai người cùng nhau xây dựng và phát triển."
+          </p>
+          <div className="flex flex-row justify-center items-center">
+            <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
+              <p
+                className="font-bold text-sm md:text-lg font-mono"
+                data-aos="fade-right"
+              >
+                CHÚ RỂ
+              </p>
+              <p
+                className="text-base italic md:text-2xl"
+                style={{ fontFamily: 'Great Vibes' }}
+                data-aos="fade-right"
+              >
+                Nguyễn Mạnh Cường
+              </p>
+              <p className="text-xs md:text-base" data-aos="fade-right">
+                Anh - ...{' '}
+              </p>
+            </div>
+            <div
+              className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
+              style={{
+                backgroundImage: "url('/src/images/Anh.jpg')",
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          </div>
+          <div className="flex flex-row justify-center items-center">
+            <div
+              className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
+              style={{
+                backgroundImage: "url('/src/images/Em.jpg')",
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+            <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
+              <p className="font-bold text-sm md:text-lg" data-aos="fade-left">
+                CÔ DÂU
+              </p>
+              <p
+                className="text-base md:text-2xl italic"
+                style={{ fontFamily: 'Great Vibes' }}
+                data-aos="fade-left"
+              >
+                Phạm Thị Thu Hằng
+              </p>
+              <p className="text-xs md:text-base" data-aos="fade-left">
+                Em - ...{' '}
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-center items-center w-[30px] h-[2px]" />
+        </div>
+      ),
+    },
+    {
+      id: 'gallery',
+      img: undefined,
+      content: (
+        <>
+          <div className="flex flex-col justify-center items-center gap-4 text-center">
+            <p
+              className="text-base md:text-2xl"
+              style={{ fontFamily: 'Allura' }}
+            >
+              Thân mời
+            </p>
+            <p className="text-base md:text-2xl">
+              ĐẾN DỰ LỄ CƯỚI CỦA CHÚNG MÌNH
+            </p>
+            <div className="h-[600px] w-full p-2 flex items-center justify-center rounded">
+              <HTMLFlipBook
+                width={428}
+                height={600}
+                className={'bg-white rounded'}
+                style={{}}
+                startPage={0}
+                size={'fixed'}
+                minWidth={0}
+                maxWidth={800}
+                minHeight={0}
+                maxHeight={600}
+                drawShadow={true}
+                flippingTime={100}
+                usePortrait={false}
+                startZIndex={0}
+                autoSize={false}
+                maxShadowOpacity={0}
+                showCover={true}
+                mobileScrollSupport={true}
+                clickEventForward={true}
+                useMouseEvents={true}
+                swipeDistance={0}
+                showPageCorners={true}
+                disableFlipByClick={false}
+              >
+                <img src="/src/images/21.jpg" />
+                <img src="/src/images/1.1.jpg" />
+                <img src="/src/images/1.jpg" />
+                <img src="/src/images/2.jpg" />
+                <img src="/src/images/2.1.jpg" />
+                <img src="/src/images/3.1.jpg" />
+                <img src="/src/images/3.jpg" />
+                <img src="/src/images/4.1.jpg" />
+                <img src="/src/images/4.jpg" />
+                <img src="/src/images/6.1.jpg" />
+                <img src="/src/images/6.jpg" />
+                <img src="/src/images/7.1.jpg" />
+                <img src="/src/images/7.jpg" />
+                <img src="/src/images/8.1.jpg" />
+                <img src="/src/images/8.2.jpg" />
+                <img src="/src/images/10.1.jpg" />
+                <img src="/src/images/10.jpg" />
+                <img src="/src/images/11.1.jpg" />
+                <img src="/src/images/11.jpg" />
+                <img src="/src/images/12.1.jpg" />
+                <img src="/src/images/12.jpg" />
+                <img src="/src/images/13.jpg" />
+                <img src="/src/images/13.jpg" />
+                <img src="/src/images/14.1.jpg" />
+                <img src="/src/images/14.jpg" />
+                <img src="/src/images/15.1.jpg" />
+                <img src="/src/images/15.jpg" />
+                <img src="/src/images/17.jpg" />
+                <img src="/src/images/17.jpg" />
+                <img src="/src/images/18.1.jpg" />
+                <img src="/src/images/18.jpg" />
+                <img src="/src/images/19.jpg" />
+                <img src="/src/images/19.jpg" />
+                <img src="/src/images/20.1.jpg" />
+                <img src="/src/images/20.jpg" />
+                <img src="/src/images/22.jpg" />
+                <img src="/src/images/22.1.jpg" />
+                <img src="/src/images/22.2.jpg" />
+                <img src="/src/images/22.3.jpg" />
+                <img src="/src/images/24.jpg" />
+                <img src="/src/images/24.1.jpg" />
+                <img src="/src/images/24.2.jpg" />
+                <img src="/src/images/27.jpg" />
+              </HTMLFlipBook>
+
+              <Lightbox
+                slides={photos}
+                open={index >= 0}
+                index={index}
+                close={() => setIndex(-1)}
+                // enable optional lightbox plugins
+                plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+              />
+            </div>
+            <div
+              className="w-full sm:w-min h-full p-4 justify-center items-center "
+              id="calendar"
+            >
+              <div
+                className={
+                  '!p-1 w-full bg-white !rounded-xl flex flex-col gap-2 justify-center items-center text-center border border-red-500'
+                }
+              >
+                <p
+                  style={{ fontFamily: 'Great Vibes' }}
+                  className="border-b-2 border-b-red-500"
+                >
+                  Tháng 9
+                </p>
+                <Calendar
+                  value={date}
+                  defaultValue={date}
+                  showNavigation={false}
+                  className={'!border-none'}
+                />
+              </div>
+            </div>
+            <p className="text-base md:text-2xl flex w-full justify-center items-center text-center">
+              TIỆC THÂN MẬT NHÀ GÁI ĐƯỢC TỔ CHỨC VÀO LÚC 17 GIỜ 00 PHÚT
+            </p>
+          </div>
+
+          <div className="w-full grid grid-cols-3 divide-x-2">
+            <div className="text-center">
+              <p>THÁNG</p>
+              <p className="text-base md:text-2xl">09</p>
+            </div>
+            <div className="text-center">
+              <p>THỨ 7</p>
+              <p className="text-lg md:text-3xl">21</p>
+            </div>
+            <div className="text-center text-base md:text-2xl">
+              <p>NĂM</p>
+              <p className="text-base md:text-2xl">2024</p>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center items-center text-center gap-4">
+            <p>(Tức ngày 19 thngs 8 năm Giáp Thìn)</p>
+            <p>TẠI NHÀ HÀNG TIỆC CƯỚI</p>
+            <p>SALON 1 - 229 Tây Sơn, Đống Đa, Hà Nội</p>
+            <a
+              href="https://maps.app.goo.gl/Jmufx2bx3PhCqkbm6"
+              target="_blank"
+              className="flex gap-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                version="1.1"
+                width="20"
+                height="20"
+                viewBox="0 0 256 256"
+                xmlSpace="preserve"
+              >
+                <defs></defs>
+                <g
+                  stroke="none"
+                  strokeWidth="0"
+                  strokeDasharray="none"
+                  strokeLinecap="butt"
+                  strokeLinejoin="miter"
+                  strokeMiterlimit="10"
+                  fill="none"
+                  fillRule="nonzero"
+                  opacity="1"
+                  transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+                >
+                  <path
+                    d="M 45 90 c -1.062 0 -2.043 -0.561 -2.583 -1.475 l -4.471 -7.563 c -9.222 -15.591 -17.933 -30.317 -20.893 -36.258 c -2.086 -4.277 -3.138 -8.852 -3.138 -13.62 C 13.916 13.944 27.86 0 45 0 c 17.141 0 31.085 13.944 31.085 31.084 c 0 4.764 -1.051 9.339 -3.124 13.596 c -0.021 0.042 -0.042 0.083 -0.063 0.124 c -3.007 6.005 -11.672 20.654 -20.843 36.159 l -4.472 7.563 C 47.044 89.439 46.062 90 45 90 z M 45 6 C 31.168 6 19.916 17.253 19.916 31.084 c 0 3.848 0.847 7.539 2.518 10.969 c 2.852 5.721 11.909 21.033 20.667 35.839 L 45 81.104 l 1.89 -3.196 c 8.763 -14.813 17.823 -30.131 20.687 -35.879 c 0.012 -0.022 0.023 -0.045 0.035 -0.067 c 1.642 -3.406 2.474 -7.065 2.474 -10.877 C 70.085 17.253 58.832 6 45 6 z"
+                    stroke="none"
+                    strokeWidth="1"
+                    strokeDasharray="none"
+                    strokeLinecap="butt"
+                    strokeLinejoin="miter"
+                    strokeMiterlimit="10"
+                    fill="rgb(0,0,0)"
+                    fillRule="nonzero"
+                    opacity="1"
+                    transform=" matrix(1 0 0 1 0 0) "
+                    // strokeLinecap="round"
+                  />
+                  <path
+                    d="M 45 44.597 c -8.076 0 -14.646 -6.57 -14.646 -14.646 S 36.924 15.306 45 15.306 c 8.075 0 14.646 6.57 14.646 14.646 S 53.075 44.597 45 44.597 z M 45 21.306 c -4.767 0 -8.646 3.878 -8.646 8.646 s 3.878 8.646 8.646 8.646 c 4.768 0 8.646 -3.878 8.646 -8.646 S 49.768 21.306 45 21.306 z"
+                    stroke="none"
+                    strokeWidth="1"
+                    strokeDasharray="none"
+                    strokeLinecap="butt"
+                    strokeLinejoin="miter"
+                    strokeMiterlimit="10"
+                    fill="rgb(0,0,0)"
+                    fillRule="nonzero"
+                    opacity="1"
+                    transform=" matrix(1 0 0 1 0 0) "
+                    stroke-linecap="round"
+                  />
+                </g>
+              </svg>
+              CHỈ DƯỜNG
+            </a>
+          </div>
+          <div className="flex gap-2 text-center w-full justify-center items-center">
+            <fieldset className="border-2 rounded-lg flex justify-center items-center">
+              <legend
+                style={{
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  padding: '0.5rem',
+                }}
+              >
+                Timer
+              </legend>
+              {timeLeft?.months > 0 && (
+                <>
+                  <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+                    {formatTime(timeLeft?.months || 0)}
+                    <span>Tháng</span>
+                  </div>{' '}
+                  :
+                </>
+              )}
+              <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+                {formatTime(timeLeft?.days || 0)}
+                <span>Ngày</span>
+              </div>{' '}
+              :
+              <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+                {formatTime(timeLeft?.hours || 0)}
+                <span>Giờ</span>
+              </div>{' '}
+              :
+              <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+                {formatTime(timeLeft?.minutes || 0)}
+                <span>Phút</span>
+              </div>{' '}
+              :
+              <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
+                {formatTime(timeLeft?.seconds || 0)}
+                <span>Giây</span>
+              </div>
+            </fieldset>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: 'thankyou',
+      img: undefined,
+      content: (
+        <div className="w-auto h-screen content-center text-center bg-white relative">
+          <img
+            src="/src/images/thankyou.jpg"
+            alt="thankyou"
+            className="w-full h-full object-cover"
+          />
+          <p
+            className="text-2xl md:text-[60px] lg:text-[120px] font-medium text-white absolute left-1/2 transform -translate-x-1/2 md:translate-y-0 -translate-y-1/2 top-[20%]"
+            style={{ fontFamily: 'Great Vibes' }}
+          >
+            Thank you
+          </p>
+        </div>
+      ),
+    },
+  ];
+  const handleScroll = () => {
+    const element = document.getElementById('calendar');
+    if (element && firstTime.current) {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+      if (isVisible) {
+        // Notify when the element is in the viewport
+        console.log('Element N is in view!');
+        alert('Element N is in view!');
+        firstTime.current = false;
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="flex w-full overflow-y-auto overflow-x-hidden flex-col gap-4 bg-orange-50 font-mono pb-2">
       <link
@@ -58,364 +445,14 @@ const Home = () => {
         href="https://fonts.googleapis.com/css?family=Allura"
         rel="stylesheet"
       />
-      <div className="w-full h-[500px] bg-slate-600 relative saveDate">
-        <div className="absolute flex flex-col justify-center items-center w-full h-full text-white">
-          <p style={{ fontFamily: 'Great Vibes' }} className="italic text-3xl">
-            Cường <span className="text-red-500">&hearts;</span> Hằng
-          </p>
-          <p>SAVE OUR DATE</p>
-          <p>21.09.2024</p>
-        </div>
-      </div>
-      <p className="flex items-center justify-center text-center w-full px-2 text-xs md:text-base">
-        "Hôn nhân không phải là một điểm đến mà là một cuộc hành trình, nơi mà
-        hai người cùng nhau xây dựng và phát triển."
-      </p>
-      <div className="flex flex-row justify-center items-center">
-        <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
-          <p
-            className="font-bold text-sm md:text-lg font-mono"
-            data-aos="fade-right"
-          >
-            CHÚ RỂ
-          </p>
-          <p
-            className="text-base italic md:text-2xl"
-            style={{ fontFamily: 'Great Vibes' }}
-            data-aos="fade-right"
-          >
-            Nguyễn Mạnh Cường
-          </p>
-          <p className="text-xs md:text-base" data-aos="fade-right">
-            Anh - ...{' '}
-          </p>
-        </div>
-        <div
-          className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
-          style={{
-            backgroundImage: "url('/src/images/Anh.jpg')",
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-      </div>
-      <div className="flex flex-row justify-center items-center">
-        <div
-          className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
-          style={{
-            backgroundImage: "url('/src/images/Em.jpg')",
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="h-full p-2 w-3/5 flex flex-col justify-center items-center md:w-[400px] md:h-[300px]">
-          <p className="font-bold text-sm md:text-lg" data-aos="fade-left">
-            CÔ DÂU
-          </p>
-          <p
-            className="text-base md:text-2xl italic"
-            style={{ fontFamily: 'Great Vibes' }}
-            data-aos="fade-left"
-          >
-            Phạm Thị Thu Hằng
-          </p>
-          <p className="text-xs md:text-base" data-aos="fade-left">
-            Em - ...{' '}
-          </p>
-        </div>
-      </div>
-      <div className="flex justify-center items-center w-[30px] h-[2px]" />
-      <div className="flex flex-col justify-center items-center gap-4 text-center">
-        <p className="text-base md:text-2xl" style={{ fontFamily: 'Allura' }}>
-          Thân mời
-        </p>
-        <p className="text-base md:text-2xl">ĐẾN DỰ LỄ CƯỚI CỦA CHÚNG MÌNH</p>
-        <div className="w-[120vw] md:w-full p-2 h-[300px] md:w-3/4 md:h-[400px]">
-          <Swiper
-            slidesPerView={3}
-            spaceBetween={8}
-            loop={true}
-            centeredSlides={true}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 3,
-                spaceBetween: 8,
-              },
-              768: {
-                slidesPerView: 5,
-                spaceBetween: 20,
-              },
-            }}
-            modules={[Autoplay, Pagination]}
-            className="w-full h-full flex justify-center items-center"
-          >
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed1.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed2.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed3.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed4.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed5.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed6.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed7.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed8.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className="w-full flex justify-center items-center text-center">
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: "url('/src/images/wed9.jpg')",
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-            </SwiperSlide>
-          </Swiper>
-        </div>
-        <div className="w-full sm:w-min h-full p-4 justify-center items-center ">
-          <div
-            className={
-              '!p-1 w-full bg-white !rounded-xl flex flex-col gap-2 justify-center items-center text-center border border-red-500'
-            }
-          >
-            <p
-              style={{ fontFamily: 'Great Vibes' }}
-              className="border-b-2 border-b-red-500"
-            >
-              Tháng 9
-            </p>
-            <Calendar
-              value={date}
-              defaultValue={date}
-              showNavigation={false}
-              className={'!border-none'}
-            />
-          </div>
-        </div>
-        <p className="text-base md:text-2xl flex w-full justify-center items-center text-center">
-          TIỆC THÂN MẬT NHÀ GÁI ĐƯỢC TỔ CHỨC VÀO LÚC 17 GIỜ 00 PHÚT
-        </p>
-      </div>
-      <div className="w-full grid grid-cols-3 divide-x-2">
-        <div className="text-center">
-          <p>THÁNG</p>
-          <p className="text-base md:text-2xl">09</p>
-        </div>
-        <div className="text-center">
-          <p>THỨ 7</p>
-          <p className="text-lg md:text-3xl">21</p>
-        </div>
-        <div className="text-center text-base md:text-2xl">
-          <p>NĂM</p>
-          <p className="text-base md:text-2xl">2024</p>
-        </div>
-      </div>
-      <div className="flex flex-col justify-center items-center text-center gap-4">
-        <p>(Tức ngày 19 thngs 8 năm Giáp Thìn)</p>
-        <p>TẠI NHÀ HÀNG TIỆC CƯỚI</p>
-        <p>SALON 1 - 229 Tây Sơn, Đống Đa, Hà Nội</p>
-        <a
-          href="https://maps.app.goo.gl/Jmufx2bx3PhCqkbm6"
-          target="_blank"
-          className="flex gap-1"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            version="1.1"
-            width="20"
-            height="20"
-            viewBox="0 0 256 256"
-            xmlSpace="preserve"
-          >
-            <defs></defs>
-            <g
-              stroke="none"
-              strokeWidth="0"
-              strokeDasharray="none"
-              strokeLinecap="butt"
-              strokeLinejoin="miter"
-              strokeMiterlimit="10"
-              fill="none"
-              fillRule="nonzero"
-              opacity="1"
-              transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
-            >
-              <path
-                d="M 45 90 c -1.062 0 -2.043 -0.561 -2.583 -1.475 l -4.471 -7.563 c -9.222 -15.591 -17.933 -30.317 -20.893 -36.258 c -2.086 -4.277 -3.138 -8.852 -3.138 -13.62 C 13.916 13.944 27.86 0 45 0 c 17.141 0 31.085 13.944 31.085 31.084 c 0 4.764 -1.051 9.339 -3.124 13.596 c -0.021 0.042 -0.042 0.083 -0.063 0.124 c -3.007 6.005 -11.672 20.654 -20.843 36.159 l -4.472 7.563 C 47.044 89.439 46.062 90 45 90 z M 45 6 C 31.168 6 19.916 17.253 19.916 31.084 c 0 3.848 0.847 7.539 2.518 10.969 c 2.852 5.721 11.909 21.033 20.667 35.839 L 45 81.104 l 1.89 -3.196 c 8.763 -14.813 17.823 -30.131 20.687 -35.879 c 0.012 -0.022 0.023 -0.045 0.035 -0.067 c 1.642 -3.406 2.474 -7.065 2.474 -10.877 C 70.085 17.253 58.832 6 45 6 z"
-                stroke="none"
-                strokeWidth="1"
-                strokeDasharray="none"
-                strokeLinecap="butt"
-                strokeLinejoin="miter"
-                strokeMiterlimit="10"
-                fill="rgb(0,0,0)"
-                fillRule="nonzero"
-                opacity="1"
-                transform=" matrix(1 0 0 1 0 0) "
-                stroke-linecap="round"
-              />
-              <path
-                d="M 45 44.597 c -8.076 0 -14.646 -6.57 -14.646 -14.646 S 36.924 15.306 45 15.306 c 8.075 0 14.646 6.57 14.646 14.646 S 53.075 44.597 45 44.597 z M 45 21.306 c -4.767 0 -8.646 3.878 -8.646 8.646 s 3.878 8.646 8.646 8.646 c 4.768 0 8.646 -3.878 8.646 -8.646 S 49.768 21.306 45 21.306 z"
-                stroke="none"
-                strokeWidth="1"
-                strokeDasharray="none"
-                strokeLinecap="butt"
-                strokeLinejoin="miter"
-                strokeMiterlimit="10"
-                fill="rgb(0,0,0)"
-                fillRule="nonzero"
-                opacity="1"
-                transform=" matrix(1 0 0 1 0 0) "
-                stroke-linecap="round"
-              />
-            </g>
-          </svg>
-          CHỈ DƯỜNG
-        </a>
-      </div>
-      <div className="flex gap-2 text-center w-full justify-center items-center">
-        <fieldset className="border-2 rounded-lg flex justify-center items-center">
-          <legend
-            style={{
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              padding: '0.5rem',
-            }}
-          >
-            Timer
-          </legend>
-          {timeLeft?.months > 0 && (
-            <>
-              <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
-                {formatTime(timeLeft?.months || 0)}
-                <span>Tháng</span>
-              </div>{' '}
-              :
-            </>
-          )}
-          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
-            {formatTime(timeLeft?.days || 0)}
-            <span>Ngày</span>
-          </div>{' '}
-          :
-          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
-            {formatTime(timeLeft?.hours || 0)}
-            <span>Giờ</span>
-          </div>{' '}
-          :
-          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
-            {formatTime(timeLeft?.minutes || 0)}
-            <span>Phút</span>
-          </div>{' '}
-          :
-          <div className="w-16 h-16 md:w-20 md:h-20 flex flex-col justify-center items-center">
-            {formatTime(timeLeft?.seconds || 0)}
-            <span>Giây</span>
-          </div>
-        </fieldset>
-      </div>
-      <div className="w-full content-center text-center bg-white relative">
-        <img src="/src/images/thankyou.jpg" alt="" />
-        <p
-          className="text-2xl md:text-[60px] lg:text-[120px] font-medium text-white absolute left-1/2 transform -translate-x-1/2 md:translate-y-0 -translate-y-1/2 top-[20%]"
-          style={{ fontFamily: 'Great Vibes' }}
-        >
-          Thank you
-        </p>
-      </div>
+      {pages.map((page, index) => (
+        <Page
+          setLoading={setLoading}
+          key={index}
+          index={index}
+          page={page}
+        ></Page>
+      ))}
       <div
         id="default-modal"
         tabIndex={-1}
@@ -442,9 +479,9 @@ const Home = () => {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                   />
                 </svg>
@@ -478,12 +515,12 @@ const Home = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="3"
+                  strokeWidth="3"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
                   />
                 </svg>
@@ -509,6 +546,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <audio id="audio" loop autoPlay={true}>
+        <source src="/src/images/music.mp3" type="audio/mpeg" />
+      </audio>
     </div>
   );
 };
