@@ -14,13 +14,16 @@ import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
-import photos from './photo';
 import Page from '@/components/Page';
+import photos from './photo';
+import { useMediaQuery } from 'usehooks-ts';
 
 const targetDate = new Date('2024-09-21T17:00:00');
 
 const Home = () => {
   const [index, setIndex] = useState(-1);
+  const matches = useMediaQuery('(max-width: 768px)')
+  console.log("🚀 ~ Home ~ matches:", matches)
   const [loading, setLoading] = useState(true);
   const firstTime = useRef<boolean>(true);
   const calculateTimeLeft = () => {
@@ -172,12 +175,12 @@ const Home = () => {
                 startPage={0}
                 size={'fixed'}
                 minWidth={0}
-                maxWidth={800}
+                maxWidth={428}
                 minHeight={0}
                 maxHeight={600}
                 drawShadow={true}
                 flippingTime={100}
-                usePortrait={false}
+                usePortrait={matches}
                 startZIndex={0}
                 autoSize={false}
                 maxShadowOpacity={0}
@@ -404,7 +407,7 @@ const Home = () => {
             className="w-full h-full object-cover"
           />
           <p
-            className="text-2xl md:text-[60px] lg:text-[120px] font-medium text-white absolute left-1/2 transform -translate-x-1/2 md:translate-y-0 -translate-y-1/2 top-[20%]"
+            className="text-[32px] md:text-[60px] lg:text-[120px] font-medium text-white absolute left-1/2 transform -translate-x-1/2 md:translate-y-0 -translate-y-1/2 top-[20%]"
             style={{ fontFamily: 'Great Vibes' }}
           >
             Thank you
@@ -443,6 +446,7 @@ const Home = () => {
         href="https://fonts.googleapis.com/css?family=Allura"
         rel="stylesheet"
       />
+
       {pages.map((page, index) => (
         <Page
           setLoading={setLoading}
