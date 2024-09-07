@@ -64,7 +64,7 @@ const Home = () => {
   const pages = [
     {
       id: 'saveDate',
-      img: '/src/images/saveDate.JPG',
+      img: 'src/images/saveDate.JPG',
       content: (
         <div className="w-full h-[500px] bg-slate-600 relative saveDate">
           <div className=" flex flex-col justify-center items-center w-full h-full text-white">
@@ -111,7 +111,7 @@ const Home = () => {
             <div
               className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
               style={{
-                backgroundImage: "url('/src/images/Anh.jpg')",
+                backgroundImage: "url('src/images/Anh.jpg')",
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -122,7 +122,7 @@ const Home = () => {
             <div
               className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
               style={{
-                backgroundImage: "url('/src/images/Em.jpg')",
+                backgroundImage: "url('src/images/Em.jpg')",
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -189,49 +189,49 @@ const Home = () => {
                 showPageCorners={true}
                 disableFlipByClick={false}
               >
-                <img src="/src/images/21.jpg" />
-                <img src="/src/images/1.1.jpg" />
-                <img src="/src/images/1.jpg" />
-                <img src="/src/images/2.jpg" />
-                <img src="/src/images/2.1.jpg" />
-                <img src="/src/images/3.1.jpg" />
-                <img src="/src/images/3.jpg" />
-                <img src="/src/images/4.1.jpg" />
-                <img src="/src/images/4.jpg" />
-                <img src="/src/images/6.1.jpg" />
-                <img src="/src/images/6.jpg" />
-                <img src="/src/images/7.1.jpg" />
-                <img src="/src/images/7.jpg" />
-                <img src="/src/images/8.1.jpg" />
-                <img src="/src/images/8.2.jpg" />
-                <img src="/src/images/10.1.jpg" />
-                <img src="/src/images/10.jpg" />
-                <img src="/src/images/11.1.jpg" />
-                <img src="/src/images/11.jpg" />
-                <img src="/src/images/12.1.jpg" />
-                <img src="/src/images/12.jpg" />
-                <img src="/src/images/13.jpg" />
-                <img src="/src/images/13.jpg" />
-                <img src="/src/images/14.1.jpg" />
-                <img src="/src/images/14.jpg" />
-                <img src="/src/images/15.1.jpg" />
-                <img src="/src/images/15.jpg" />
-                <img src="/src/images/17.jpg" />
-                <img src="/src/images/17.jpg" />
-                <img src="/src/images/18.1.jpg" />
-                <img src="/src/images/18.jpg" />
-                <img src="/src/images/19.jpg" />
-                <img src="/src/images/19.jpg" />
-                <img src="/src/images/20.1.jpg" />
-                <img src="/src/images/20.jpg" />
-                <img src="/src/images/22.jpg" />
-                <img src="/src/images/22.1.jpg" />
-                <img src="/src/images/22.2.jpg" />
-                <img src="/src/images/22.3.jpg" />
-                <img src="/src/images/24.jpg" />
-                <img src="/src/images/24.1.jpg" />
-                <img src="/src/images/24.2.jpg" />
-                <img src="/src/images/27.jpg" />
+                <img src="src/images/21.jpg" />
+                <img src="src/images/1.1.jpg" />
+                <img src="src/images/1.jpg" />
+                <img src="src/images/2.jpg" />
+                <img src="src/images/2.1.jpg" />
+                <img src="src/images/3.1.jpg" />
+                <img src="src/images/3.jpg" />
+                <img src="src/images/4.1.jpg" />
+                <img src="src/images/4.jpg" />
+                <img src="src/images/6.1.jpg" />
+                <img src="src/images/6.jpg" />
+                <img src="src/images/7.1.jpg" />
+                <img src="src/images/7.jpg" />
+                <img src="src/images/8.1.jpg" />
+                <img src="src/images/8.2.jpg" />
+                <img src="src/images/10.1.jpg" />
+                <img src="src/images/10.jpg" />
+                <img src="src/images/11.1.jpg" />
+                <img src="src/images/11.jpg" />
+                <img src="src/images/12.1.jpg" />
+                <img src="src/images/12.jpg" />
+                <img src="src/images/13.jpg" />
+                <img src="src/images/13.jpg" />
+                <img src="src/images/14.1.jpg" />
+                <img src="src/images/14.jpg" />
+                <img src="src/images/15.1.jpg" />
+                <img src="src/images/15.jpg" />
+                <img src="src/images/17.jpg" />
+                <img src="src/images/17.jpg" />
+                <img src="src/images/18.1.jpg" />
+                <img src="src/images/18.jpg" />
+                <img src="src/images/19.jpg" />
+                <img src="src/images/19.jpg" />
+                <img src="src/images/20.1.jpg" />
+                <img src="src/images/20.jpg" />
+                <img src="src/images/22.jpg" />
+                <img src="src/images/22.1.jpg" />
+                <img src="src/images/22.2.jpg" />
+                <img src="src/images/22.3.jpg" />
+                <img src="src/images/24.jpg" />
+                <img src="src/images/24.1.jpg" />
+                <img src="src/images/24.2.jpg" />
+                <img src="src/images/27.jpg" />
               </HTMLFlipBook>
 
               <Lightbox
@@ -399,7 +399,7 @@ const Home = () => {
       content: (
         <div className="w-auto h-screen content-center text-center bg-white relative">
           <img
-            src="/src/images/thankyou.jpg"
+            src="src/images/thankyou.jpg"
             alt="thankyou"
             className="w-full h-full object-cover"
           />
@@ -436,7 +436,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex w-full overflow-y-auto overflow-x-hidden flex-col gap-4 bg-orange-50 font-mono pb-2">
+    <div className="flex w-full overflow-y-auto overflow-x-hidden flex-col gap-4 bg-orange-50 font-mono">
       <link
         href="https://fonts.googleapis.com/css?family=Great Vibes"
         rel="stylesheet"
@@ -547,7 +547,7 @@ const Home = () => {
         </div>
       </div>
       <audio id="audio" loop autoPlay={true}>
-        <source src="/src/images/music.mp3" type="audio/mpeg" />
+        <source src="src/images/music.mp3" type="audio/mpeg" />
       </audio>
     </div>
   );
