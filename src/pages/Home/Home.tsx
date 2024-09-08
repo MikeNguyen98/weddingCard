@@ -221,7 +221,7 @@ const Home = () => {
               </div>
             </div>
             <p className="text-base md:text-2xl flex w-full justify-center items-center text-center">
-              TIỆC THÂN MẬT NHÀ GÁI ĐƯỢC TỔ CHỨC VÀO LÚC 17 GIỜ 00 PHÚT
+              TIỆC THÂN MẬT NHÀ GÁI ĐƯỢC TỔ CHỨC VÀO LÚC <br /> 17 GIỜ 00 PHÚT
             </p>
           </div>
 
@@ -386,6 +386,9 @@ const Home = () => {
           >
             OUR PHOTOBOOK
           </p>
+          <p className="text-center text-sm md:text-base text-gray-500">
+            (Nhấn vào để xem ảnh)
+          </p>
           {matches ? (
             <div className="w-full h-full relative">
               <img src="/21.jpg" width={380} height={530} alt="wed21" />
@@ -412,7 +415,7 @@ const Home = () => {
               startZIndex={0}
               autoSize={false}
               maxShadowOpacity={0}
-              showCover={true}
+              showCover={false}
               mobileScrollSupport={true}
               clickEventForward={false}
               useMouseEvents={true}
@@ -420,6 +423,15 @@ const Home = () => {
               showPageCorners={true}
               disableFlipByClick={false}
             >
+              <div className="w-full h-[530px] ">
+                <img src="/background.jpg" className="max-h-[530px] min-w-[380px]" />
+                <p
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 w-full h-full content-center leading-[54px] text-[56px] text-center z-10 text-[#45503F]"
+                  style={{ fontFamily: 'Great Vibes' }}
+                >
+                  This is where our story begins.
+                </p>
+              </div>
               <div className="w-full h-full md:max-h-[530px]">
                 <img src="/21.jpg" className="md:max-h-[530px]" />
               </div>
@@ -574,11 +586,14 @@ const Home = () => {
                   className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                 />
               </div>
+              <div className="w-full h-full md:max-h-[530px] content-center">
+                <img src="/29.JPG" className="md:max-h-[530px]" />
+              </div>
               <div className="w-full h-full md:max-h-[530px] relative content-center ">
-                <img src="/28.jpg" className="md:max-h-[530px]" />
-                <div className="flex absolute w-full h-full items-center justify-center top-1/2 z-10">
+                <img src="/28.jpg" className="min-h-[530px] md:max-h-[530px]" />
+                <div className="flex absolute w-full h-full items-center justify-center top-[20%] z-10">
                   <p
-                    className="text-[40px] w-full h-full text-pink-400 text-center font-bold"
+                    className="text-[40px] w-full h-full text-[#45503F] text-center font-bold"
                     style={{ fontFamily: 'Allura' }}
                   >
                     The End
