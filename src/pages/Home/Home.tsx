@@ -390,7 +390,7 @@ const Home = () => {
             (Nhấn vào để xem ảnh)
           </p>
           {matches ? (
-            <div className="w-full h-full relative">
+            <div className="w-full h-full relative flex justify-center items-center">
               <img src="/21.jpg" width={380} height={530} alt="wed21" />
               <div
                 className="flex justify-center items-center bg-transparent absolute top-0 left-0 w-full h-full cursor-pointer z-10 text-[40px] text-white hover:bg-black/30"
