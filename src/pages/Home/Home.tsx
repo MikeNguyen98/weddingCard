@@ -4,10 +4,11 @@ import {
   Form,
   FormProps,
   Input,
-  message,
   Modal,
   Select,
+  Tabs,
 } from 'antd';
+import { QrcodeOutlined } from '@ant-design/icons';
 import { useEffect, useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -62,6 +63,7 @@ const Home = () => {
   const [timeLeft, setTimeLeft] = useState<any>(calculateTimeLeft());
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalQROpen, setIsModalQROpen] = useState(false);
 
   const onFinish: FormProps<any>['onFinish'] = async (values) => {
     const newData = {
@@ -424,7 +426,10 @@ const Home = () => {
               disableFlipByClick={false}
             >
               <div className="w-full h-[530px] ">
-                <img src="/background.jpg" className="max-h-[530px] min-w-[380px]" />
+                <img
+                  src="/background.jpg"
+                  className="max-h-[530px] min-w-[380px]"
+                />
                 <p
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 w-full h-full content-center leading-[54px] text-[56px] text-center z-10 text-[#45503F]"
                   style={{ fontFamily: 'Great Vibes' }}
@@ -789,7 +794,38 @@ const Home = () => {
           </div>
         )}
       </Modal>
+      <Modal
+        centered
+        title={
+          <div className="text-[28px] w-full text-center">Mừng cưới</div>
+        }
+        open={isModalQROpen}
+        footer={null}
+        onCancel={() => setIsModalQROpen(false)}
+      >
+        <Tabs
+          centered
+          defaultActiveKey="1"
+          size={'large'}
+          items={[
+            {
+              label: `Nhà trai`,
+              key: '1',
+              children: <img src="/QR_BOY.jpg" />,
+            },
+            {
+              label: `Nhà gái`,
+              key: '2',
+              children: <img src="/QR_GIRL.jpg" />,
+            },
+          ]}
+        />
+      </Modal>
       <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
+        <FloatButton
+          icon={<QrcodeOutlined />}
+          onClick={() => setIsModalQROpen(true)}
+        />
         <FloatButton onClick={() => setIsModalOpen(true)} />
         <FloatButton.BackTop visibilityHeight={0} />
       </FloatButton.Group>
