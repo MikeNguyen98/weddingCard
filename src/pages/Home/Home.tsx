@@ -99,7 +99,7 @@ const Home = () => {
       img: '/saveDate.JPG',
       content: (
         <div className="w-full h-[500px] bg-slate-600 relative saveDate">
-          <div className=" flex flex-col justify-center items-center w-full h-full text-white">
+          <div className=" flex flex-col justify-center items-center w-full h-full text-white pt-28">
             <p
               style={{ fontFamily: 'Great Vibes' }}
               className="italic text-3xl"
