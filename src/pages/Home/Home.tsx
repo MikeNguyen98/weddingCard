@@ -192,7 +192,7 @@ const Home = () => {
         <>
           <div className="flex flex-col justify-center items-center gap-4 text-center">
             <p
-              className="text-base md:text-2xl"
+              className="text-2xl md:text-3xl"
               style={{ fontFamily: 'Allura' }}
             >
               Thân mời
@@ -645,7 +645,7 @@ const Home = () => {
       const rect = element.getBoundingClientRect();
       const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
 
-      if (isVisible) {
+      if (isVisible && !isSubmit) {
         // Notify when the element is in the viewport
         firstTime.current = false;
         setIsModalOpen(true);
