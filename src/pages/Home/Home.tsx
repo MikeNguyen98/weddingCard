@@ -595,6 +595,11 @@ const Home = () => {
       ),
     },
     {
+      id: 'beforeThankyou',
+      img: undefined,
+      content: <></>,
+    },
+    {
       id: 'thankyou',
       img: undefined,
       content: (
@@ -615,7 +620,7 @@ const Home = () => {
     },
   ];
   const handleScroll = () => {
-    const element = document.getElementById('thankyou');
+    const element = document.getElementById('beforeThankyou');
     if (element && firstTime.current) {
       const rect = element.getBoundingClientRect();
       const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
