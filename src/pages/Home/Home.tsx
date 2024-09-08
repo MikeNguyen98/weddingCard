@@ -235,7 +235,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="w-full grid grid-cols-3 divide-x-2">
+          <div className="w-full grid grid-cols-3 divide-x-2 md:px-[20%]">
             <div className="text-center">
               <p>THÁNG</p>
               <p className="text-base md:text-2xl">09</p>
