@@ -1,12 +1,13 @@
+import { Button, Form, FormProps, Input, Modal, Select } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import HTMLFlipBook from 'react-pageflip';
 import './styles.css';
 
+import { addDoc, collection } from 'firebase/firestore';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-
 // import optional lightbox plugins
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
 import Slideshow from 'yet-another-react-lightbox/plugins/slideshow';
@@ -15,8 +16,9 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
 import Page from '@/components/Page';
-import photos from './photo';
+import { db } from '@/services/firebase';
 import { useMediaQuery } from 'usehooks-ts';
+import photos from './photo';
 
 const targetDate = new Date('2024-09-21T17:00:00');
 
@@ -48,6 +50,20 @@ const Home = () => {
     return timeLeft;
   };
   const [timeLeft, setTimeLeft] = useState<any>(calculateTimeLeft());
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onFinish: FormProps<any>['onFinish'] = async (values) => {
+    const newData = {
+      ...values,
+    };
+    try {
+      await addDoc(collection(db, 'response'), newData);
+      setIsModalOpen(false);
+    } catch (err) {
+      console.log('🚀 ~ Home ~ err:', err);
+    }
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -267,6 +283,9 @@ const Home = () => {
               </svg>
               CHỈ DƯỜNG
             </a>
+            <div className="w-[200px] h-[200px] rounded">
+              <img src="/map.png" alt="map" />
+            </div>
           </div>
           <div className="flex gap-2 text-center w-full justify-center items-center">
             <fieldset className="border-2 rounded-lg flex justify-center items-center">
@@ -590,7 +609,7 @@ const Home = () => {
       if (isVisible) {
         // Notify when the element is in the viewport
         firstTime.current = false;
-        alert('aa');
+        setIsModalOpen(true);
       }
     }
   };
@@ -627,99 +646,95 @@ const Home = () => {
           page={page}
         ></Page>
       ))}
-      <div
-        id="default-modal"
-        tabIndex={-1}
-        aria-hidden="true"
-        className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+
+      <Modal
+        centered
+        title={
+          <div className="text-[28px] w-full text-center">Bạn sẽ đến chứ?</div>
+        }
+        open={isModalOpen}
+        closeIcon={null}
+        footer={null}
+        width={matches ? 380 : 600}
       >
-        <div className="relative p-4 w-full max-w-2xl max-h-full">
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Terms of Service
-              </h3>
-              <button
-                type="button"
-                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                data-modal-hide="default-modal"
-              >
-                <svg
-                  className="w-3 h-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 14"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                  />
-                </svg>
-                <span className="sr-only">Close modal</span>
-              </button>
-            </div>
-            <div className="p-4 md:p-5 space-y-4">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                With less than a month to go before the European Union enacts
-                new consumer privacy laws for its citizens, companies around the
-                world are updating their terms of service agreements to comply.
-              </p>
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                The European Union’s General Data Protection Regulation
-                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
-                common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk
-                data breaches that could personally affect them.
-              </p>
-            </div>
-            {/* back to top */}
-            <button
-              type="button"
-              data-twe-ripple-init
-              data-twe-ripple-color="light"
-              className="!fixed bottom-5 end-5 hidden rounded-full bg-red-600 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg"
-              id="btn-back-to-top"
+        <p className="text-center">
+          Đám cưới của chúng tôi sẽ trọn vẹn hơn khi có thêm lời chúc phúc và sự
+          hiện diện của các bạn. Xin hãy xác nhận sự có mặt của mình để chúng
+          tôi chuẩn bị đón tiếp một cách chu đáo nhất nhé!
+        </p>
+        <p className="text-center">Trân trọng!</p>
+
+        <div className="w-full h-full">
+          <Form
+            name="layout-multiple-horizontal"
+            layout="vertical"
+            labelCol={{ span: 4 }}
+            wrapperCol={{ span: 24 }}
+            onFinish={onFinish}
+          >
+            <Form.Item
+              layout="vertical"
+              label="Họ tên"
+              name="name"
+              rules={[{ required: true }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
             >
-              <span className="[&>svg]:w-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="3"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
-                  />
-                </svg>
-              </span>
-            </button>
-            {/* modal */}
-            <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-              <button
-                data-modal-hide="default-modal"
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                I accept
-              </button>
-              <button
-                data-modal-hide="default-modal"
-                type="button"
-                className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
-                Decline
-              </button>
-            </div>
-          </div>
+              <Input size="small" className="rounded" placeholder="Họ tên" />
+            </Form.Item>
+            <Form.Item
+              layout="vertical"
+              label="Số điện thoại"
+              name="phone"
+              rules={[{ required: false }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Input
+                size="small"
+                className="rounded"
+                placeholder="Số điện thoại"
+              />
+            </Form.Item>
+            <Form.Item
+              layout="vertical"
+              label="Gửi những lời chúc tốt đẹp nhất"
+              name="message"
+              rules={[{ required: false }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Input.TextArea placeholder="Gửi những lựa chúc tốt đẹp nhất" />
+            </Form.Item>
+            <Form.Item
+              layout="vertical"
+              label="Bạn sẽ tới dự chứ?"
+              name="attendence"
+              rules={[{ required: false }]}
+              initialValue={'yes'}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Select defaultValue="yes">
+                <Select.Option value="yes">
+                  Có, chắc chắn sẽ có mặt &#128513;
+                </Select.Option>
+                <Select.Option value="no">
+                  Tiếc quá, mình không thể tới dự được rồi &#128546;
+                </Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
+              className="flex justify-center items-center"
+              wrapperCol={{ span: 24 }}
+            >
+              <Button type="primary" htmlType="submit">
+                Phản hồi
+              </Button>
+            </Form.Item>
+          </Form>
         </div>
-      </div>
+      </Modal>
       <audio id="audio" loop autoPlay={true}>
         <source src="/music.mp3" type="audio/mpeg" />
       </audio>
