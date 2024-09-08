@@ -669,7 +669,7 @@ const Home = () => {
 
   useEffect(() => {
     const handlePlayAudio = () => {
-      if(audioRef.current) {
+      if(audioRef.current && audioRef.current.paused) {
         audioRef.current.currentTime = 0;
         audioRef.current.play();
       }
