@@ -38,6 +38,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const isSubmit = localStorage.getItem('isSubmit');
   const firstTime = useRef<boolean>(true);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const calculateTimeLeft = () => {
     const difference = targetDate.getTime() - new Date().getTime();
     let timeLeft = {};
@@ -644,27 +646,40 @@ const Home = () => {
       ),
     },
   ];
-  const handleScroll = () => {
-    const element = document.getElementById('beforeThankyou');
-    if (element && firstTime.current) {
-      const rect = element.getBoundingClientRect();
-      const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-
-      if (isVisible && !isSubmit) {
-        // Notify when the element is in the viewport
-        firstTime.current = false;
-        setIsModalOpen(true);
-      }
-    }
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById('beforeThankyou');
+      if (element && firstTime.current) {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+        if (isVisible && !isSubmit) {
+          // Notify when the element is in the viewport
+          firstTime.current = false;
+          setIsModalOpen(true);
+        }
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  useEffect(() => {
+    const handlePlayAudio = () => {
+      if(audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
+      }
+    };
+
+    window.addEventListener('scroll', handlePlayAudio);
+    return () => {
+      window.removeEventListener('scroll', handlePlayAudio);
+    };
+  }, []);
   return (
     <div className="flex w-full overflow-y-auto overflow-x-hidden flex-col gap-4 bg-orange-50 font-mono">
       <link
@@ -796,9 +811,7 @@ const Home = () => {
       </Modal>
       <Modal
         centered
-        title={
-          <div className="text-[28px] w-full text-center">Mừng cưới</div>
-        }
+        title={<div className="text-[28px] w-full text-center">Mừng cưới</div>}
         open={isModalQROpen}
         footer={null}
         onCancel={() => setIsModalQROpen(false)}
@@ -830,7 +843,7 @@ const Home = () => {
         <FloatButton.BackTop visibilityHeight={0} />
       </FloatButton.Group>
 
-      <audio id="audio" loop autoPlay={true}>
+      <audio id="audio" loop ref={audioRef}>
         <source src="/music.mp3" type="audio/mpeg" />
       </audio>
     </div>
