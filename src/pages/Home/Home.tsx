@@ -36,7 +36,7 @@ import { useMediaQuery } from 'usehooks-ts';
 import photos from './photo';
 import Loader from '@/components/Loader';
 
-const targetDate = new Date('2024-09-21T17:00:00');
+const targetDate = new Date('2024-09-21T17:30:00');
 
 const Home = () => {
   const [index, setIndex] = useState(-1);
@@ -101,7 +101,7 @@ const Home = () => {
 
     return () => clearInterval(timer);
   }, [targetDate]);
-  const date = new Date('2024-09-21');
+  const date = new Date('2024-09-21T17:30:00');
   const formatTime = (time: number) => (
     <span className='text-md md:"text-3xl font-bold'>
       {time < 10 ? `0${time}` : time}
