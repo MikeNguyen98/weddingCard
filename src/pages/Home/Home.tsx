@@ -4,6 +4,7 @@ import {
   Form,
   FormProps,
   Input,
+  message,
   Modal,
   Select,
 } from 'antd';
@@ -64,8 +65,12 @@ const Home = () => {
 
   const onFinish: FormProps<any>['onFinish'] = async (values) => {
     const newData = {
-      ...values,
+      name: values.name ?? '',
+      phone: values.phone ?? '',
+      message: values.message ?? '',
+      attendance: values.attendance ?? 'yes',
     };
+
     try {
       await addDoc(collection(db, 'response'), newData);
       setIsModalOpen(false);
