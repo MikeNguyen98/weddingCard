@@ -880,7 +880,6 @@ const Home = () => {
         loop
         autoPlay
         ref={audioRef}
-        onCanPlay={(props) => console.log('aaa', props)}
         onLoadedData={() => setLoading(false)}
       >
         <source src="/music.mp3" type="audio/mpeg" srcSet="/music.mp3" />
