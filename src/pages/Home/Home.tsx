@@ -251,7 +251,7 @@ const Home = () => {
           </div>
           <div className="flex flex-col justify-center items-center text-center gap-4">
             <p>(Tức ngày 19 tháng 8 năm Giáp Thìn)</p>
-            <p>TẠI NHÀ HÀNG TIỆC CƯỚI</p>
+            <p className="font-bold">TẠI TRUNG TÂM TIỆC CƯỚI HỘI NGHỊ MIPEC PALACE</p>
             <p>SALON 1 - 229 Tây Sơn, Đống Đa, Hà Nội</p>
             <a
               href="https://maps.app.goo.gl/Jmufx2bx3PhCqkbm6"
