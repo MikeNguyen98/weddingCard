@@ -310,7 +310,7 @@ const Home = () => {
                   padding: '0.5rem',
                 }}
               >
-                Timer
+                Đếm ngược
               </legend>
               {timeLeft?.months > 0 && (
                 <>
@@ -569,14 +569,14 @@ const Home = () => {
                   className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                 />
               </div>
-              <div className="w-full h-full md:max-h-[530px] p-4 relative">
-                <img src="/1.1.jpg" className="md:max-h-[530px]" />
-                <div className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="w-full h-full md:max-h-[530px] relative content-center ">
+                <img src="/28.jpg" className="md:max-h-[530px]" />
+                <div className="flex absolute w-full h-full items-center justify-center top-1/2 z-10">
                   <p
-                    className="text-[40px] w-full h-full content-center text-white"
+                    className="text-[40px] w-full h-full text-pink-400 text-center font-bold"
                     style={{ fontFamily: 'Allura' }}
                   >
-                    End
+                    The End
                   </p>
                 </div>
               </div>

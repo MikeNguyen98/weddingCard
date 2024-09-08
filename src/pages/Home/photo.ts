@@ -247,6 +247,12 @@ const photos = [
     height: 1440,
     alt: "wed21",
   },
+  {
+    asset: "/28.jpg",
+    width: 1080,
+    height: 1440,
+    alt: "wed21",
+  },
 ].map(
   ({ asset, alt, width, height }) =>
     ({
