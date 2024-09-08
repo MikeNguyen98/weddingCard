@@ -1,4 +1,12 @@
-import { Button, Form, FormProps, Input, Modal, Select } from 'antd';
+import {
+  Button,
+  FloatButton,
+  Form,
+  FormProps,
+  Input,
+  Modal,
+  Select,
+} from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -26,6 +34,7 @@ const Home = () => {
   const [index, setIndex] = useState(-1);
   const matches = useMediaQuery('(max-width: 768px)');
   const [loading, setLoading] = useState(true);
+  const isSubmit = localStorage.getItem('isSubmit');
   const firstTime = useRef<boolean>(true);
   const calculateTimeLeft = () => {
     const difference = targetDate.getTime() - new Date().getTime();
@@ -60,9 +69,14 @@ const Home = () => {
     try {
       await addDoc(collection(db, 'response'), newData);
       setIsModalOpen(false);
+      localStorage.setItem('isSubmit', 'true');
     } catch (err) {
       console.log('🚀 ~ Home ~ err:', err);
     }
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -123,7 +137,7 @@ const Home = () => {
                 Nguyễn Mạnh Cường
               </p>
               <p className="text-xs md:text-base" data-aos="fade-right">
-                Anh - ...{' '}
+                {/* Anh - ...{' '} */}
               </p>
             </div>
             <div
@@ -158,7 +172,7 @@ const Home = () => {
                 Phạm Thị Thu Hằng
               </p>
               <p className="text-xs md:text-base" data-aos="fade-left">
-                Em - ...{' '}
+                {/* Em - ...{' '} */}
               </p>
             </div>
           </div>
@@ -221,7 +235,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center text-center gap-4">
-            <p>(Tức ngày 19 thngs 8 năm Giáp Thìn)</p>
+            <p>(Tức ngày 19 tháng 8 năm Giáp Thìn)</p>
             <p>TẠI NHÀ HÀNG TIỆC CƯỚI</p>
             <p>SALON 1 - 229 Tây Sơn, Đống Đa, Hà Nội</p>
             <a
@@ -362,7 +376,7 @@ const Home = () => {
       content: (
         <div className="w-full p-5 flex flex-col gap-4 items-center justify-center rounded">
           <p
-            className="font-bold text-[32px]"
+            className="font-bold text-[28px]"
             style={{ fontFamily: 'Sacramento' }}
           >
             OUR PHOTOBOOK
@@ -601,7 +615,7 @@ const Home = () => {
     },
   ];
   const handleScroll = () => {
-    const element = document.getElementById('gallery');
+    const element = document.getElementById('thankyou');
     if (element && firstTime.current) {
       const rect = element.getBoundingClientRect();
       const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -653,9 +667,9 @@ const Home = () => {
           <div className="text-[28px] w-full text-center">Bạn sẽ đến chứ?</div>
         }
         open={isModalOpen}
-        closeIcon={null}
         footer={null}
         width={matches ? 380 : 600}
+        onCancel={handleCancel}
       >
         <p className="text-center">
           Đám cưới của chúng tôi sẽ trọn vẹn hơn khi có thêm lời chúc phúc và sự
@@ -664,77 +678,97 @@ const Home = () => {
         </p>
         <p className="text-center">Trân trọng!</p>
 
-        <div className="w-full h-full">
-          <Form
-            name="layout-multiple-horizontal"
-            layout="vertical"
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 24 }}
-            onFinish={onFinish}
-          >
-            <Form.Item
+        {!isSubmit ? (
+          <div className="w-full h-full">
+            <Form
+              name="layout-multiple-horizontal"
               layout="vertical"
-              label="Họ tên"
-              name="name"
-              rules={[{ required: true }]}
-              labelCol={{ span: 24 }}
+              labelCol={{ span: 4 }}
               wrapperCol={{ span: 24 }}
+              onFinish={onFinish}
             >
-              <Input size="small" className="rounded" placeholder="Họ tên" />
-            </Form.Item>
-            <Form.Item
-              layout="vertical"
-              label="Số điện thoại"
-              name="phone"
-              rules={[{ required: false }]}
-              labelCol={{ span: 24 }}
-              wrapperCol={{ span: 24 }}
+              <Form.Item
+                layout="vertical"
+                label="Họ tên"
+                name="name"
+                rules={[{ required: true }]}
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}
+              >
+                <Input size="small" className="rounded" placeholder="Họ tên" />
+              </Form.Item>
+              <Form.Item
+                layout="vertical"
+                label="Số điện thoại"
+                name="phone"
+                rules={[{ required: false }]}
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}
+              >
+                <Input
+                  size="small"
+                  className="rounded"
+                  placeholder="Số điện thoại"
+                />
+              </Form.Item>
+              <Form.Item
+                layout="vertical"
+                label="Gửi những lời chúc tốt đẹp nhất"
+                name="message"
+                rules={[{ required: false }]}
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}
+              >
+                <Input.TextArea placeholder="Gửi những lựa chúc tốt đẹp nhất" />
+              </Form.Item>
+              <Form.Item
+                layout="vertical"
+                label="Bạn sẽ tới dự chứ?"
+                name="attendence"
+                rules={[{ required: false }]}
+                initialValue={'yes'}
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}
+              >
+                <Select defaultValue="yes">
+                  <Select.Option value="yes">
+                    Có, chắc chắn sẽ có mặt &#128513;
+                  </Select.Option>
+                  <Select.Option value="no">
+                    Tiếc quá, mình không thể tới dự được rồi &#128546;
+                  </Select.Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                className="flex w-full h-full flex-row items-center justify-center items-center gap-4"
+                wrapperCol={{ span: 24 }}
+              >
+                <Button type="default" htmlType="button" onClick={handleCancel}>
+                  Để sau
+                </Button>
+                &nbsp;
+                <Button type="primary" htmlType="submit">
+                  Phản hồi
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
+        ) : (
+          <div className="w-full h-full">
+            <p
+              className="w-full h-full text-center text-[28px]"
+              style={{ fontFamily: 'Great Vibes' }}
             >
-              <Input
-                size="small"
-                className="rounded"
-                placeholder="Số điện thoại"
-              />
-            </Form.Item>
-            <Form.Item
-              layout="vertical"
-              label="Gửi những lời chúc tốt đẹp nhất"
-              name="message"
-              rules={[{ required: false }]}
-              labelCol={{ span: 24 }}
-              wrapperCol={{ span: 24 }}
-            >
-              <Input.TextArea placeholder="Gửi những lựa chúc tốt đẹp nhất" />
-            </Form.Item>
-            <Form.Item
-              layout="vertical"
-              label="Bạn sẽ tới dự chứ?"
-              name="attendence"
-              rules={[{ required: false }]}
-              initialValue={'yes'}
-              labelCol={{ span: 24 }}
-              wrapperCol={{ span: 24 }}
-            >
-              <Select defaultValue="yes">
-                <Select.Option value="yes">
-                  Có, chắc chắn sẽ có mặt &#128513;
-                </Select.Option>
-                <Select.Option value="no">
-                  Tiếc quá, mình không thể tới dự được rồi &#128546;
-                </Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              className="flex justify-center items-center"
-              wrapperCol={{ span: 24 }}
-            >
-              <Button type="primary" htmlType="submit">
-                Phản hồi
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
+              Cảm ơn bạn đã phản hồi thư mời!
+            </p>
+          </div>
+        )}
       </Modal>
+      <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
+        <FloatButton onClick={() => setIsModalOpen(true)} />
+        <FloatButton.BackTop visibilityHeight={0} />
+      </FloatButton.Group>
+
       <audio id="audio" loop autoPlay={true}>
         <source src="/music.mp3" type="audio/mpeg" />
       </audio>
