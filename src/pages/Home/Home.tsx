@@ -311,8 +311,11 @@ const Home = () => {
                   <div className="w-full h-full max-h-[530px] content-center">
                     <img src="/27.jpg" className="max-h-[530px]" />
                   </div>
-                  <div className="w-full h-full max-h-[530px] p-4 content-center">
+                  <div className="w-full h-full max-h-[530px] p-4 content-center relative">
                     <img src="/1.1.jpg" className="max-h-[530px]" />
+                    <div className="absolute w-full h-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 z-10">
+                      End
+                    </div>
                   </div>
                 </HTMLFlipBook>
               ) : (
@@ -490,14 +493,22 @@ const Home = () => {
                       className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
                     />
                   </div>
-                  <div className="w-full h-full md:max-h-[530px]">
+                  <div className="w-full h-full md:max-h-[530px] relative">
                     <img
                       src="/27.jpg"
                       className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                     />
                   </div>
-                  <div className="w-full h-full md:max-h-[530px] p-4">
+                  <div className="w-full h-full md:max-h-[530px] p-4 relative">
                     <img src="/1.1.jpg" className="md:max-h-[530px]" />
+                    <div className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                      <p
+                        className="text-[40px] w-full h-full content-center text-white"
+                        style={{ fontFamily: 'Allura' }}
+                      >
+                        End
+                      </p>
+                    </div>
                   </div>
                 </HTMLFlipBook>
               )}
@@ -513,7 +524,6 @@ const Home = () => {
             </div>
             <div
               className="w-full sm:w-min h-full p-4 justify-center items-center "
-              id="calendar"
             >
               <div
                 className={
@@ -666,17 +676,17 @@ const Home = () => {
       img: undefined,
       content: (
         <div className="flex flex-col items-center justify-center gap-2">
-          <p className='font-bold'>Đại Diện Gia Đình</p>
-          <div className="grid grid-cols-2 gap-2">
+          <p className="font-bold">Đại Diện Gia Đình</p>
+          <div className="grid grid-cols-2 gap-6">
             <div className="flex flex-col items-center justify-center gap-1">
-              <p className='font-bold'>Nhà trai</p>
+              <p className="font-bold">Nhà trai</p>
               <div className="flex flex-col items-start">
                 <p>Ông Nguyễn Quốc Hùng</p>
                 <p>Bà Trần Thị Thu Hằng</p>
               </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-1">
-              <p className='font-bold'>Nhà gái</p>
+              <p className="font-bold">Nhà gái</p>
               <div className="flex flex-col items-start">
                 <p>Ông Phạm Văn Hiền</p>
                 <p>Bà Nguyễn Thị Minh</p>
@@ -707,7 +717,7 @@ const Home = () => {
     },
   ];
   const handleScroll = () => {
-    const element = document.getElementById('calendar');
+    const element = document.getElementById('daidien');
     if (element && firstTime.current) {
       const rect = element.getBoundingClientRect();
       const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -715,6 +725,7 @@ const Home = () => {
       if (isVisible) {
         // Notify when the element is in the viewport
         firstTime.current = false;
+        alert('aa')
       }
     }
   };
