@@ -231,7 +231,7 @@ const Home = () => {
               </div>
             </div>
             <p className="text-base md:text-2xl flex w-full justify-center items-center text-center">
-              TIỆC THÂN MẬT NHÀ GÁI ĐƯỢC TỔ CHỨC VÀO LÚC <br /> 17 GIỜ 00 PHÚT
+              LỄ THÀNH HÔN ĐƯỢC TỔ CHỨC VÀO LÚC <br /> 17 GIỜ 30 PHÚT
             </p>
           </div>
 
