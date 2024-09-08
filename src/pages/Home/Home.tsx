@@ -22,8 +22,7 @@ const targetDate = new Date('2024-09-21T17:00:00');
 
 const Home = () => {
   const [index, setIndex] = useState(-1);
-  const matches = useMediaQuery('(max-width: 768px)')
-  console.log("🚀 ~ Home ~ matches:", matches)
+  const matches = useMediaQuery('(max-width: 768px)');
   const [loading, setLoading] = useState(true);
   const firstTime = useRef<boolean>(true);
   const calculateTimeLeft = () => {
@@ -87,8 +86,8 @@ const Home = () => {
       id: 'aboutus',
       img: undefined,
       content: (
-        <div className="w-full h-full">
-          <p className="flex items-center justify-center text-center w-full px-2 text-xs md:text-base">
+        <div className="w-full h-full flex flex-col gap-4">
+          <p className="flex items-center justify-center text-center w-full px-6 text-xs md:text-base">
             "Hôn nhân không phải là một điểm đến mà là một cuộc hành trình, nơi
             mà hai người cùng nhau xây dựng và phát triển."
           </p>
@@ -166,76 +165,342 @@ const Home = () => {
             <p className="text-base md:text-2xl">
               ĐẾN DỰ LỄ CƯỚI CỦA CHÚNG MÌNH
             </p>
-            <div className="h-[600px] w-full p-2 flex items-center justify-center rounded">
-              <HTMLFlipBook
-                width={390}
-                height={600}
-                className={'bg-white rounded'}
-                style={{}}
-                startPage={0}
-                size={'fixed'}
-                minWidth={0}
-                maxWidth={428}
-                minHeight={0}
-                maxHeight={600}
-                drawShadow={true}
-                flippingTime={100}
-                usePortrait={matches}
-                startZIndex={0}
-                autoSize={false}
-                maxShadowOpacity={0}
-                showCover={true}
-                mobileScrollSupport={true}
-                clickEventForward={true}
-                useMouseEvents={true}
-                swipeDistance={0}
-                showPageCorners={true}
-                disableFlipByClick={false}
-              >
-                <img src="/21.jpg" />
-                <img src="/1.1.jpg" />
-                <img src="/1.jpg" />
-                <img src="/2.jpg" />
-                <img src="/2.1.jpg" />
-                <img src="/3.1.jpg" />
-                <img src="/3.jpg" />
-                <img src="/4.1.jpg" />
-                <img src="/4.jpg" />
-                <img src="/6.1.jpg" />
-                <img src="/6.jpg" />
-                <img src="/7.1.jpg" />
-                <img src="/7.jpg" />
-                <img src="/8.1.jpg" />
-                <img src="/8.2.jpg" />
-                <img src="/10.1.jpg" />
-                <img src="/10.jpg" />
-                <img src="/11.1.jpg" />
-                <img src="/11.jpg" />
-                <img src="/12.1.jpg" />
-                <img src="/12.jpg" />
-                <img src="/13.jpg" />
-                <img src="/13.jpg" />
-                <img src="/14.1.jpg" />
-                <img src="/14.jpg" />
-                <img src="/15.1.jpg" />
-                <img src="/15.jpg" />
-                <img src="/17.jpg" />
-                <img src="/17.jpg" />
-                <img src="/18.1.jpg" />
-                <img src="/18.jpg" />
-                <img src="/19.jpg" />
-                <img src="/19.jpg" />
-                <img src="/20.1.jpg" />
-                <img src="/20.jpg" />
-                <img src="/22.jpg" />
-                <img src="/22.1.jpg" />
-                <img src="/22.2.jpg" />
-                <img src="/22.3.jpg" />
-                <img src="/24.jpg" />
-                <img src="/24.1.jpg" />
-                <img src="/24.2.jpg" />
-                <img src="/27.jpg" />
-              </HTMLFlipBook>
+            <div className="w-full p-5 flex items-center justify-center rounded">
+              {matches ? (
+                <HTMLFlipBook
+                  width={380}
+                  height={530}
+                  className={'bg-white rounded'}
+                  style={{ borderRadius: 4 }}
+                  renderOnlyPageLengthChange={true}
+                  startPage={0}
+                  size={'fixed'}
+                  minWidth={0}
+                  maxWidth={1000}
+                  minHeight={0}
+                  maxHeight={0}
+                  drawShadow={true}
+                  flippingTime={1000}
+                  usePortrait={true}
+                  startZIndex={0}
+                  autoSize={false}
+                  maxShadowOpacity={0}
+                  showCover={true}
+                  mobileScrollSupport={true}
+                  clickEventForward={true}
+                  useMouseEvents={true}
+                  swipeDistance={0}
+                  showPageCorners={true}
+                  disableFlipByClick={false}
+                >
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/21.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/1.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/2.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/2.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/3.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/3.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/4.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/4.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/6.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/6.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/7.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/7.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/8.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/8.2.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/10.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/10.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/11.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/11.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/12.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/12.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/13.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/14.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/14.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/15.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/15.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/17.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/18.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/18.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/19.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/20.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/20.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/22.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/22.1.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/22.2.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/22.3.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/24.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/24.1.jpg" className="max-h-[530px]" />
+                    <img src="/24.2.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] content-center">
+                    <img src="/27.jpg" className="max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full max-h-[530px] p-4 content-center">
+                    <img src="/1.1.jpg" className="max-h-[530px]" />
+                  </div>
+                </HTMLFlipBook>
+              ) : (
+                <HTMLFlipBook
+                  width={380}
+                  height={530}
+                  className={'bg-white rounded'}
+                  style={{ borderRadius: 4 }}
+                  renderOnlyPageLengthChange={true}
+                  startPage={0}
+                  size={'fixed'}
+                  minWidth={0}
+                  maxWidth={1000}
+                  minHeight={0}
+                  maxHeight={0}
+                  drawShadow={true}
+                  flippingTime={1000}
+                  usePortrait={matches}
+                  startZIndex={0}
+                  autoSize={false}
+                  maxShadowOpacity={0}
+                  showCover={true}
+                  mobileScrollSupport={true}
+                  clickEventForward={true}
+                  useMouseEvents={true}
+                  swipeDistance={0}
+                  showPageCorners={true}
+                  disableFlipByClick={false}
+                >
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/21.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/1.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/2.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/2.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/3.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/3.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/4.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/4.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/6.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/6.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/7.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/7.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/8.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/8.2.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/10.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/10.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/11.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/11.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/12.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/12.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:min-h-[530px] min-w-[760px] md:max-h-[530px]">
+                    <img
+                      src="/13.jpg"
+                      className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:min-h-[530px] min-w-[760px] md:max-h-[530px]">
+                    <img
+                      src="/13.jpg"
+                      className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/14.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/14.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/15.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/15.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img
+                      src="/17.jpg"
+                      className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img
+                      src="/17.jpg"
+                      className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/18.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/18.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img
+                      src="/19.jpg"
+                      className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img
+                      src="/19.jpg"
+                      className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px] content-center">
+                    <img src="/20.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/20.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/22.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/22.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/22.2.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/22.3.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px] content-center">
+                    <img src="/24.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img src="/24.1.jpg" className="md:max-h-[530px]" />
+                    <img src="/24.2.jpg" className="md:max-h-[530px]" />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img
+                      src="/27.jpg"
+                      className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px]">
+                    <img
+                      src="/27.jpg"
+                      className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
+                    />
+                  </div>
+                  <div className="w-full h-full md:max-h-[530px] p-4">
+                    <img src="/1.1.jpg" className="md:max-h-[530px]" />
+                  </div>
+                </HTMLFlipBook>
+              )}
 
               <Lightbox
                 slides={photos}
@@ -394,6 +659,31 @@ const Home = () => {
             </fieldset>
           </div>
         </>
+      ),
+    },
+    {
+      id: 'daidien',
+      img: undefined,
+      content: (
+        <div className="flex flex-col items-center justify-center gap-2">
+          <p className='font-bold'>Đại Diện Gia Đình</p>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex flex-col items-center justify-center gap-1">
+              <p className='font-bold'>Nhà trai</p>
+              <div className="flex flex-col items-start">
+                <p>Ông Nguyễn Quốc Hùng</p>
+                <p>Bà Trần Thị Thu Hằng</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-1">
+              <p className='font-bold'>Nhà gái</p>
+              <div className="flex flex-col items-start">
+                <p>Ông Phạm Văn Hiền</p>
+                <p>Bà Nguyễn Thị Minh</p>
+              </div>
+            </div>
+          </div>
+        </div>
       ),
     },
     {
