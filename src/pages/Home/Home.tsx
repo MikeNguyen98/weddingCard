@@ -7,8 +7,13 @@ import {
   Modal,
   Select,
   Tabs,
+  Tooltip,
 } from 'antd';
-import { QrcodeOutlined } from '@ant-design/icons';
+import {
+  QrcodeOutlined,
+  PlayCircleOutlined,
+  PauseCircleOutlined,
+} from '@ant-design/icons';
 import { useEffect, useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -29,6 +34,7 @@ import Page from '@/components/Page';
 import { db } from '@/services/firebase';
 import { useMediaQuery } from 'usehooks-ts';
 import photos from './photo';
+import Loader from '@/components/Loader';
 
 const targetDate = new Date('2024-09-21T17:00:00');
 
@@ -299,8 +305,7 @@ const Home = () => {
                     fill="rgb(0,0,0)"
                     fillRule="nonzero"
                     opacity="1"
-                    transform=" matrix(1 0 0 1 0 0) "
-                    stroke-linecap="round"
+                    transform=" matrix(1 0 0 1 0 0)"
                   />
                 </g>
               </svg>
@@ -669,7 +674,7 @@ const Home = () => {
 
   useEffect(() => {
     const handlePlayAudio = () => {
-      if(audioRef.current && audioRef.current.paused) {
+      if (audioRef.current && audioRef.current.paused) {
         audioRef.current.currentTime = 0;
         audioRef.current.play();
       }
@@ -680,6 +685,7 @@ const Home = () => {
       window.removeEventListener('scroll', handlePlayAudio);
     };
   }, []);
+
   return (
     <div className="flex w-full overflow-y-auto overflow-x-hidden flex-col gap-4 bg-orange-50 font-mono">
       <link
@@ -697,14 +703,18 @@ const Home = () => {
         rel="stylesheet"
       />
 
-      {pages.map((page, index) => (
-        <Page
-          setLoading={setLoading}
-          key={index}
-          index={index}
-          page={page}
-        ></Page>
-      ))}
+      {loading ? (
+        <Loader />
+      ) : (
+        pages.map((page, index) => (
+          <Page
+            setLoading={setLoading}
+            key={index}
+            index={index}
+            page={page}
+          ></Page>
+        ))
+      )}
 
       <Modal
         centered
@@ -775,7 +785,7 @@ const Home = () => {
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
               >
-                <Select defaultValue="yes">
+                <Select>
                   <Select.Option value="yes">
                     Có, chắc chắn sẽ có mặt &#128513;
                   </Select.Option>
@@ -835,16 +845,45 @@ const Home = () => {
         />
       </Modal>
       <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
-        <FloatButton
-          icon={<QrcodeOutlined />}
-          onClick={() => setIsModalQROpen(true)}
-        />
-        <FloatButton onClick={() => setIsModalOpen(true)} />
+        <Tooltip title="Bật/Tắt nhạc">
+          <FloatButton
+            icon={
+              audioRef.current?.paused ? (
+                <PlayCircleOutlined />
+              ) : (
+                <PauseCircleOutlined />
+              )
+            }
+            onClick={() =>
+              audioRef.current?.paused
+                ? audioRef.current?.play()
+                : audioRef.current?.pause()
+            }
+          />
+        </Tooltip>{' '}
+        <Tooltip title="QR mừng cưới">
+          <FloatButton
+            icon={<QrcodeOutlined />}
+            onClick={() => setIsModalQROpen(true)}
+          />
+        </Tooltip>
+        <Tooltip title="Phản hồi">
+          <FloatButton onClick={() => setIsModalOpen(true)} />
+        </Tooltip>
         <FloatButton.BackTop visibilityHeight={0} />
       </FloatButton.Group>
 
-      <audio id="audio" loop ref={audioRef}>
-        <source src="/music.mp3" type="audio/mpeg" />
+      <audio
+        preload="auto"
+        muted={false}
+        id="audio"
+        loop
+        autoPlay
+        ref={audioRef}
+        onCanPlay={(props) => console.log('aaa', props)}
+        onLoadedData={() => setLoading(false)}
+      >
+        <source src="/music.mp3" type="audio/mpeg" srcSet="/music.mp3" />
       </audio>
     </div>
   );
