@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-react-free",
+  "name": "Wedding",
   "private": true,
   "version": "1.3.0",
   "type": "module",
@@ -9,9 +9,8 @@
     "preview": "vite preview"
   },
   "author": {
-    "name": "TailAdmin",
-    "email": "hello@tailadmin.com",
-    "url": "https://tailadmin.com"
+    "name": "Our Wedding Cường ♥ Hằng",
+    "email": "cuongnm.dev.vn@gmail.com"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.32.0",
