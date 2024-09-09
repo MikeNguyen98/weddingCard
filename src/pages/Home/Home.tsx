@@ -678,6 +678,7 @@ const Home = () => {
     const handlePlayAudio = () => {
       if (audioRef.current && audioRef.current.paused) {
         audioRef.current.currentTime = 0;
+        audioRef.current.volume = 0.1;
         audioRef.current.play();
       }
     };
@@ -881,6 +882,7 @@ const Home = () => {
         id="audio"
         loop
         autoPlay
+        
         ref={audioRef}
         onLoadedData={() => setLoading(false)}
       >
