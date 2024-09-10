@@ -151,8 +151,12 @@ const Home = () => {
               >
                 Nguyễn Mạnh Cường
               </p>
-              <p className="text-xs md:text-base" data-aos="fade-right">
-                {/* Anh - ...{' '} */}
+              <p className="text-xs md:text-base px-2" data-aos="fade-right">
+                Hạnh phúc nhất trên đời không phải là việc gặp được người tuyệt
+                nhất ở những tháng ngày đẹp nhất, mà là một người sẽ từ từ nhìn
+                mình già đi, không cần ở những năm tháng đẹp nhất, mà là đúng
+                người, đúng thời điểm, nắm tay nhau cùng đi. Anh rất hạnh phúc
+                vì gặp được em, cùng anh về nhà em nhé!
               </p>
             </div>
             <div
@@ -186,8 +190,12 @@ const Home = () => {
               >
                 Phạm Thị Thu Hằng
               </p>
-              <p className="text-xs md:text-base" data-aos="fade-left">
-                {/* Em - ...{' '} */}
+              <p className="text-xs md:text-base px-2" data-aos="fade-left">
+                Em - một cô gái đa sầu, đa cảm, thật may mắn khi gặp được anh.
+                Cảm ơn anh luôn quan tâm, chăm sóc em thật nhiều, nuông chiều
+                những khi em giận hờn vô cớ. Bắt đầu từ hôm nay chúng ta sẽ viết
+                nên một chương mới của cuộc đời, bằng tình thương yêu và hạnh
+                phúc đong đầy anh nhé!
               </p>
             </div>
           </div>
@@ -676,8 +684,11 @@ const Home = () => {
 
   useEffect(() => {
     const handlePlayAudio = () => {
-      if (audioRef.current && audioRef.current.paused) {
-        audioRef.current.currentTime = 0;
+      if (
+        audioRef.current &&
+        audioRef.current.paused &&
+        audioRef.current.currentTime === 0
+      ) {
         audioRef.current.volume = 0.1;
         audioRef.current.play();
       }
@@ -753,7 +764,11 @@ const Home = () => {
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
               >
-                <Input size="small" className="rounded" placeholder="Họ tên" />
+                <Input
+                  size="small"
+                  className="rounded-md"
+                  placeholder="Họ tên"
+                />
               </Form.Item>
               <Form.Item
                 layout="vertical"
@@ -765,7 +780,7 @@ const Home = () => {
               >
                 <Input
                   size="small"
-                  className="rounded"
+                  className="rounded-md"
                   placeholder="Số điện thoại"
                 />
               </Form.Item>
@@ -797,18 +812,20 @@ const Home = () => {
                   </Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item
-                className="flex w-full h-full flex-row items-center justify-center items-center gap-4"
-                wrapperCol={{ span: 24 }}
-              >
-                <Button type="default" htmlType="button" onClick={handleCancel}>
-                  Để sau
-                </Button>
-                &nbsp;
-                <Button type="primary" htmlType="submit">
+              <div className="w-full h-full flex justify-center items-center flex-col gap-2">
+                <Button type="primary" block htmlType="submit">
                   Phản hồi
                 </Button>
-              </Form.Item>
+
+                <Button
+                  type="default"
+                  block
+                  htmlType="button"
+                  onClick={handleCancel}
+                >
+                  Mình trả lời sau nhé
+                </Button>
+              </div>
             </Form>
           </div>
         ) : (
@@ -882,7 +899,6 @@ const Home = () => {
         id="audio"
         loop
         autoPlay
-        
         ref={audioRef}
         onLoadedData={() => setLoading(false)}
       >
