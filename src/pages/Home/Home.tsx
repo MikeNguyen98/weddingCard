@@ -112,7 +112,7 @@ const Home = () => {
   const pages = [
     {
       id: 'saveDate',
-      img: '/saveDate.JPG',
+      img: undefined,
       content: (
         <div
           className="w-full h-[500px] bg-slate-600 relative"
