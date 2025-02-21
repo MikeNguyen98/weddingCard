@@ -114,7 +114,19 @@ const Home = () => {
       id: 'saveDate',
       img: '/saveDate.JPG',
       content: (
-        <div className="w-full h-[500px] bg-slate-600 relative saveDate">
+        <div
+          className="w-full h-[500px] bg-slate-600 relative"
+          style={{
+            backgroundImage: `image-set(
+      url('/avif/saveDate.avif') type('image/avif'),
+      url('/webp/saveDate.webp') type('image/webp'),
+      url('/saveDate.jpg') type('image/jpeg')
+    )`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
           <div className=" flex flex-col justify-center items-center w-full h-full text-white pt-28">
             <p
               style={{ fontFamily: 'Great Vibes' }}
