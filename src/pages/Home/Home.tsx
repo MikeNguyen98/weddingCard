@@ -163,7 +163,11 @@ const Home = () => {
             <div
               className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
               style={{
-                backgroundImage: "url('/Anh.jpg')",
+                backgroundImage: `image-set(
+      url('/avif/Anh.avif') type('image/avif'),
+      url('/webp/Anh.webp') type('image/webp'),
+      url('/Anh.jpg') type('image/jpeg')
+    )`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -174,7 +178,11 @@ const Home = () => {
             <div
               className="border border-1 w-2/5 h-[60vw] md:w-[200px] md:h-[300px]"
               style={{
-                backgroundImage: "url('/Em.jpg')",
+                backgroundImage: `image-set(
+      url('/avif/Em.avif') type('image/avif'),
+      url('/webp/Em.webp') type('image/webp'),
+      url('/Em.jpg') type('image/jpeg')
+    )`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -411,7 +419,7 @@ const Home = () => {
           </p>
           {matches ? (
             <div className="w-full h-full relative flex justify-center items-center">
-              <Image src="/21.jpg" width={380} height={530}/>
+              <Image src="/21.jpg" width={380} height={530} />
               <div
                 className="flex justify-center items-center bg-transparent absolute top-0 left-0 w-full h-full cursor-pointer z-10 text-[40px] text-white hover:bg-black/30"
                 onClick={() => setIndex(0)}
@@ -613,7 +621,10 @@ const Home = () => {
                 <Image src="/29.JPG" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px] relative content-center ">
-                <Image src="/28.jpg" className="min-h-[530px] md:max-h-[530px]" />
+                <Image
+                  src="/28.jpg"
+                  className="min-h-[530px] md:max-h-[530px]"
+                />
                 <div className="flex absolute w-full h-full items-center justify-center top-[20%] z-10">
                   <p
                     className="text-[40px] w-full h-full text-[#45503F] text-center font-bold"
@@ -647,10 +658,7 @@ const Home = () => {
       img: undefined,
       content: (
         <div className="w-auto h-screen content-center text-center bg-white relative">
-          <Image
-            src="/thankyou.jpg"
-            className="w-full h-full object-cover"
-          />
+          <Image src="/thankyou.jpg" className="w-full h-full object-cover" />
           <p
             className="text-[32px] md:text-[60px] lg:text-[120px] font-medium text-white absolute left-1/2 transform -translate-x-1/2 md:translate-y-0 -translate-y-1/2 top-[20%]"
             style={{ fontFamily: 'Great Vibes' }}

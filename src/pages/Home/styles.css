@@ -1,5 +1,8 @@
 .saveDate {
-    background-image: url('../../images/saveDate.JPG');
+    background-image: 
+        url('../../images/saveDate.avif'), 
+        url('../../images/saveDate.webp'), 
+        url('../../images/saveDate.JPG');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
