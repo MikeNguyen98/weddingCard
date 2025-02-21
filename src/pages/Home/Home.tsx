@@ -35,6 +35,7 @@ import { db } from '@/services/firebase';
 import { useMediaQuery } from 'usehooks-ts';
 import photos from './photo';
 import Loader from '@/components/Loader';
+import Image from '@/components/Image/Image';
 
 const targetDate = new Date('2024-09-21T17:30:00');
 
@@ -322,7 +323,7 @@ const Home = () => {
               CHỈ DƯỜNG
             </a>
             <div className="w-[200px] h-[200px] rounded">
-              <img src="/map.png" alt="map" />
+              <Image src="/map.png" />
             </div>
           </div>
           <div className="flex gap-2 text-center w-full justify-center items-center">
@@ -410,7 +411,7 @@ const Home = () => {
           </p>
           {matches ? (
             <div className="w-full h-full relative flex justify-center items-center">
-              <img src="/21.jpg" width={380} height={530} alt="wed21" />
+              <Image src="/21.jpg" width={380} height={530}/>
               <div
                 className="flex justify-center items-center bg-transparent absolute top-0 left-0 w-full h-full cursor-pointer z-10 text-[40px] text-white hover:bg-black/30"
                 onClick={() => setIndex(0)}
@@ -443,7 +444,7 @@ const Home = () => {
               disableFlipByClick={false}
             >
               <div className="w-full h-[530px] ">
-                <img
+                <Image
                   src="/background.jpg"
                   className="max-h-[530px] min-w-[380px]"
                 />
@@ -455,164 +456,164 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/21.jpg" className="md:max-h-[530px]" />
+                <Image src="/21.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/1.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/1.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/1.jpg" className="md:max-h-[530px]" />
+                <Image src="/1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/2.jpg" className="md:max-h-[530px]" />
+                <Image src="/2.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/2.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/2.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/3.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/3.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/3.jpg" className="md:max-h-[530px]" />
+                <Image src="/3.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/4.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/4.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/4.jpg" className="md:max-h-[530px]" />
+                <Image src="/4.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/6.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/6.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/6.jpg" className="md:max-h-[530px]" />
+                <Image src="/6.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/7.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/7.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/7.jpg" className="md:max-h-[530px]" />
+                <Image src="/7.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/8.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/8.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/8.2.jpg" className="md:max-h-[530px]" />
+                <Image src="/8.2.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/10.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/10.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/10.jpg" className="md:max-h-[530px]" />
+                <Image src="/10.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/11.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/11.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/11.jpg" className="md:max-h-[530px]" />
+                <Image src="/11.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/12.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/12.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/12.jpg" className="md:max-h-[530px]" />
+                <Image src="/12.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:min-h-[530px] min-w-[760px] md:max-h-[530px]">
-                <img
+                <Image
                   src="/13.jpg"
                   className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:min-h-[530px] min-w-[760px] md:max-h-[530px]">
-                <img
+                <Image
                   src="/13.jpg"
                   className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/14.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/14.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/14.jpg" className="md:max-h-[530px]" />
+                <Image src="/14.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/15.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/15.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/15.jpg" className="md:max-h-[530px]" />
+                <Image src="/15.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img
+                <Image
                   src="/17.jpg"
                   className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img
+                <Image
                   src="/17.jpg"
                   className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/18.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/18.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/18.jpg" className="md:max-h-[530px]" />
+                <Image src="/18.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img
+                <Image
                   src="/19.jpg"
                   className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img
+                <Image
                   src="/19.jpg"
                   className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px] content-center">
-                <img src="/20.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/20.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/20.jpg" className="md:max-h-[530px]" />
+                <Image src="/20.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/22.jpg" className="md:max-h-[530px]" />
+                <Image src="/22.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/22.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/22.1.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/22.2.jpg" className="md:max-h-[530px]" />
+                <Image src="/22.2.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/22.3.jpg" className="md:max-h-[530px]" />
+                <Image src="/22.3.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px] content-center">
-                <img src="/24.jpg" className="md:max-h-[530px]" />
+                <Image src="/24.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img src="/24.1.jpg" className="md:max-h-[530px]" />
-                <img src="/24.2.jpg" className="md:max-h-[530px]" />
+                <Image src="/24.1.jpg" className="md:max-h-[530px]" />
+                <Image src="/24.2.jpg" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px]">
-                <img
+                <Image
                   src="/27.jpg"
                   className="md:min-h-[530px] md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px] relative">
-                <img
+                <Image
                   src="/27.jpg"
                   className="md:min-h-[530px] hidden md:max-h-[530px] min-w-[760px]"
                 />
               </div>
               <div className="w-full h-full md:max-h-[530px] content-center">
-                <img src="/29.JPG" className="md:max-h-[530px]" />
+                <Image src="/29.JPG" className="md:max-h-[530px]" />
               </div>
               <div className="w-full h-full md:max-h-[530px] relative content-center ">
-                <img src="/28.jpg" className="min-h-[530px] md:max-h-[530px]" />
+                <Image src="/28.jpg" className="min-h-[530px] md:max-h-[530px]" />
                 <div className="flex absolute w-full h-full items-center justify-center top-[20%] z-10">
                   <p
                     className="text-[40px] w-full h-full text-[#45503F] text-center font-bold"
@@ -646,9 +647,8 @@ const Home = () => {
       img: undefined,
       content: (
         <div className="w-auto h-screen content-center text-center bg-white relative">
-          <img
+          <Image
             src="/thankyou.jpg"
-            alt="thankyou"
             className="w-full h-full object-cover"
           />
           <p
@@ -854,12 +854,12 @@ const Home = () => {
             {
               label: `Nhà trai`,
               key: '1',
-              children: <img src="/QR_BOY.jpg" />,
+              children: <Image src="/QR_BOY.jpg" />,
             },
             {
               label: `Nhà gái`,
               key: '2',
-              children: <img src="/QR_GIRL.jpg" />,
+              children: <Image src="/QR_GIRL.jpg" />,
             },
           ]}
         />
